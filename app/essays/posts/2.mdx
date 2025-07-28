@@ -29,15 +29,22 @@ In addition to the points expanded on above, another reason why VUI is crucial l
 
 The technology behind VUI is composed of two layers of machine learning under the umbrella of Spoken Language Understanding (SLU). SLU is ["usually broken down into two parts: Automatic Speech Recognition (ASR) and Natural Language Understanding (NLU)"](https://www.arxiv-vanity.com/papers/1805.10190/). The ASR utilizes an acoustic model, trained to recognize patterns and structures from the audio fed into it, to discern [phonetic representations from a voice recording. These phonetic representations are then analyzed by a language model that turns the spoken utterance into text](https://people.ict.usc.edu/~traum/Papers/phon-aware-nlu2012.pdf). Subsequently, using the derived text, the NLU discerns intents and slots. Implementation of NLUs can be observed even in non-voice-based user interfaces like chatbots or Google searches, e.g., "find me the closest restaurant" or "cheap flights to DC," which results in a specialized component typically seen on top of search results.
 
-<div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem" }}>
-  <div style={{ flex: 1, marginTop: 0, paddingTop: 0 }}>
-    In addition to utilizing machine learning models, [NLUs work by binding specified words or phrases to specific 'intentions,' which are then set up to trigger functions related to that intent. The slots and variables are other parts of the user input which are used as parameters of that function](http://arxiv.org/abs/1805.10190). So in the first example, 'find me' would trigger an intent which would then call a function, making a request to a series of predefined actions (sometimes with data as input) designed specifically for looking through perhaps a list of addresses. The slots such as 'closest' and 'restaurant' would narrow down the addresses to consider. Once complete, the information is sent back to the user and viewable on their device. In conclusion, this combination of ASR and NLU serves as the backbone of voice user interfaces.
-  </div>
+<div style={{ position: "relative" }}>
   <img
     src="/images/2-2.jpeg"
-    alt="VUI diagram"
-    style={{ width: "250px", maxWidth: "40%", marginTop: "1.5em" }}
+    alt=""
+    style={{ 
+      width: "250px", 
+      maxWidth: "40%", 
+      float: "right", 
+      marginLeft: "1.5rem",
+      marginTop: "0.5rem",
+      marginBottom: "0.7rem"
+    }}
   />
+  <div>
+    In addition to utilizing machine learning models, [NLUs work by binding specified words or phrases to specific 'intentions,' which are then set up to trigger functions related to that intent. The slots and variables are other parts of the user input which are used as parameters of that function](http://arxiv.org/abs/1805.10190). So in the first example, 'find me' would trigger an intent which would then call a function, making a request to a series of predefined actions (sometimes with data as input) designed specifically for looking through perhaps a list of addresses. The slots such as 'closest' and 'restaurant' would narrow down the addresses to consider. Once complete, the information is sent back to the user and viewable on their device. In conclusion, this combination of ASR and NLU serves as the backbone of voice user interfaces.
+  </div>
 </div>
 
 It's important to realize that spoken language understanding still requires large amounts of computing resources. The ["model achieving human parity in [56] is a combination of several neural networks, each containing several hundreds of millions of parameters, and large-vocabulary language models made of several millions of n-grams"](http://arxiv.org/abs/1805.10190). As Coucke described, a consequence of the size of the models and possible parameters is that it takes significant computing resources to ultimately discern intentions and slots. The necessary computing resources mean that instead of smartphones, tablets, computers, or any other end-user devices handling the process, specialized computers usually housed in data centers (also known as 'the cloud') connected to the end-user via the internet are required to access the voice-based functionalities. Until there are more developments in end-user device processing, one downside of this is that VUI's functionality is limited to having an ongoing internet connection. It could be assumed that being required to connect to the internet reduces user confidence in VUI's availability. In conclusion, the magnitude of computing resources required exemplifies one of the limitations of voice user interfaces.
