@@ -1,0 +1,89 @@
+---
+title: "2 - [UX] Seriously, When Was the Last Time You Used Siri?"
+publishedAt: '2020-02-25'
+summary: "Exploring the scientific, user experience, and product challenges of voice user interfaces like Siri, and what the future holds for VUI adoption."
+---
+
+#### A Dive into the Scientific, User Experience, and Product-Based Issues Surrounding Voice User Interfaces
+
+<div style={{display: 'flex', justifyContent: 'center'}}>
+  <img 
+src="/images/2-1.gif" alt="Siri UX GIF"
+    style={{ width: '90%', maxWidth: '700px' }} 
+  />
+</div>
+
+
+## Introduction
+
+"Hey Siri! What does the fox say?" Voice user interfaces (VUI) and virtual assistants like Siri enable communication with computers through speech recognition coupled with text-to-speech replies. While spoken language understanding (SLU) products and features are relatively new to the market, the tangible obstacles hindering widespread adoption of VUIs stem from current technical limitations combined with use cases that are incongruent with these limitations. The technology behind voice user interfaces, typical product development processes, problems with existing VUI-based products, and potential future developments all impact the adoption of VUI-based products.
+
+## Why VUI?
+
+The first argument for the importance of voice user interfaces in computing involves its tremendous research progress. Shawn DuBravac, chief economist at the Consumer Technical Association, describes how ["improvements in natural language processing have set the stage for a revolution in how we interact with tech"](https://www.notion.so/4791d7ed69724bd1b34836162d82676d?pvs=21). Natural language processing, a subfield of linguistics and computer science, involves reading, deciphering, understanding, and making sense of human languages. Since its inception, the error rates in natural language processing have aggressively decreased from [100% in 1994 to 23% in 2012, and just 6% in 2017](https://www.notion.so/4791d7ed69724bd1b34836162d82676d?pvs=21). Similar to advancements in semiconductor technology that made personal computing feasible, the rapid pace of NLP research indicates its likelihood of becoming a commonplace way for people to interact with their computers. In conclusion, the speculation related to NLP's promising future is a result of vigorous research in the field.
+
+Moreover, VUI is critical to the future of computing because it enhances accessibility. Jason Amunwa, a product consultant, describes voice as the ["new pinnacle of intuitive interfaces that democratize the use of technology"](https://www.notion.so/4791d7ed69724bd1b34836162d82676d?pvs=21). VUI's faceless human-computer interaction (HCI) mimics the way humans interact with each other. Consequently, it holds the potential to make computing accessible to a wide array of people, including those with visual impairments. VUI is promising because of its likelihood of making computing more intuitive and accessible to groups that wouldn't ordinarily have easy access to computers.
+
+In addition to the points expanded on above, another reason why VUI is crucial lies in its potential to simplify computing. As a result of voice-based human-computer interaction, ["VUI can be used to improve the user experience by shortening the operation process chain"](https://uxdesign.cc/trends-to-keep-an-eye-in-2020-8cf09b30f77f). The operation process chain refers to the steps required to complete an action. For example, if a person wanted to send an email to a classmate, they would have to first find their classmate's email, open the email application, compose the email, and then send it. Voice user interfaces can leverage their interface to make computing simpler by flattening this process chain.
+
+## Some Technical Aspects
+
+The technology behind VUI is composed of two layers of machine learning under the umbrella of Spoken Language Understanding (SLU). SLU is ["usually broken down into two parts: Automatic Speech Recognition (ASR) and Natural Language Understanding (NLU)"](https://www.arxiv-vanity.com/papers/1805.10190/). The ASR utilizes an acoustic model, trained to recognize patterns and structures from the audio fed into it, to discern [phonetic representations from a voice recording. These phonetic representations are then analyzed by a language model that turns the spoken utterance into text](https://people.ict.usc.edu/~traum/Papers/phon-aware-nlu2012.pdf). Subsequently, using the derived text, the NLU discerns intents and slots. Implementation of NLUs can be observed even in non-voice-based user interfaces like chatbots or Google searches, e.g., "find me the closest restaurant" or "cheap flights to DC," which results in a specialized component typically seen on top of search results.
+
+<div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem" }}>
+  <div style={{ flex: 1, marginTop: 0, paddingTop: 0 }}>
+    In addition to utilizing machine learning models, [NLUs work by binding specified words or phrases to specific 'intentions,' which are then set up to trigger functions related to that intent. The slots and variables are other parts of the user input which are used as parameters of that function](http://arxiv.org/abs/1805.10190). So in the first example, 'find me' would trigger an intent which would then call a function, making a request to a series of predefined actions (sometimes with data as input) designed specifically for looking through perhaps a list of addresses. The slots such as 'closest' and 'restaurant' would narrow down the addresses to consider. Once complete, the information is sent back to the user and viewable on their device. In conclusion, this combination of ASR and NLU serves as the backbone of voice user interfaces.
+  </div>
+  <img
+    src="/images/2-2.jpeg"
+    alt="VUI diagram"
+    style={{ width: "250px", maxWidth: "40%", marginTop: "1.5em" }}
+  />
+</div>
+
+It's important to realize that spoken language understanding still requires large amounts of computing resources. The ["model achieving human parity in [56] is a combination of several neural networks, each containing several hundreds of millions of parameters, and large-vocabulary language models made of several millions of n-grams"](http://arxiv.org/abs/1805.10190). As Coucke described, a consequence of the size of the models and possible parameters is that it takes significant computing resources to ultimately discern intentions and slots. The necessary computing resources mean that instead of smartphones, tablets, computers, or any other end-user devices handling the process, specialized computers usually housed in data centers (also known as 'the cloud') connected to the end-user via the internet are required to access the voice-based functionalities. Until there are more developments in end-user device processing, one downside of this is that VUI's functionality is limited to having an ongoing internet connection. It could be assumed that being required to connect to the internet reduces user confidence in VUI's availability. In conclusion, the magnitude of computing resources required exemplifies one of the limitations of voice user interfaces.
+
+## Where VUI Falls Short
+
+Equally important are the aspects of voice user interfaces that prevent widespread use. One commenter in a Hacker News thread warns that ["Voice as a user interface doesn't scale. If you have a lot of people in a small space (an office, a coffee shop, a metro train, etc.) then voice just won't work"](http://news.ycombinator.com/item?id=16306686). If a user is in a crowded space, it's difficult for the natural language processing system to extract usable language data from a voice recording, limiting VUI's functionality to only quiet areas. Consequently, while it's possible to have a large number of people in a dense area using the touch screen functionality of their phones, it's unlikely to have a large number of people in a dense area interacting with their devices through VUI. Another limitation of voice user interfaces is their inability to be used effectively in compact, noisy areas.
+
+In addition to that, there are psychological reasons why voice user interfaces are difficult to use. Daniel Westlund, a startup mentor based in Berlin, describes how ["the timeframe within which the interaction takes place, and the required cognitive load, is compressed. During the interaction, attention is high as the user cannot control the speed of information flow"](https://careerfoundry.com/en/essays/ux-design/voice-ui-design-and-cognitive-load/). Consequently, cognitive load is also high, which can lead to a poor experience and increased user errors. While voice user interfaces allow for multiple steps to be completed at once, the heavy cognitive load and the significant amount of attention required to, for example, think of what to say and then say it in a way that the user thinks the computer will understand, makes completing tasks with VUI difficult and ultimately unappealing. As illustrated by Westlund's quote, building products around use cases that require a smaller cognitive load may make VUIs more painless to use.
+
+One hindrance is whether an operating system's APIs are public or private. Application program interfaces allow different parts of a computer to communicate with each other; private APIs are accessible by a specific set of applications, whereas public ones are not. Due to which layer (operating system, application, page) the VUI is implemented on or which data and APIs it's allowed access to, VUI may not be able to compress an entire process chain. However, even within a narrow breadth such as being implemented only in an application as opposed to an entire operating system, it's highly achievable for VUI to make what would have been at least two steps into one voice command.
+
+The next issue that plagues voice user interfaces involves the discoverability of features. Ewa Luger and Abigail Sellen, researchers at Microsoft, describe that "[half of users explicitly stated that they did not know what their CA could do. This resulted in them either feeling overwhelmed by the unknown potential or led them to assume that the tasks they could accomplish were highly limited](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/p5286-luger.pdf)." In contrast to graphical user interfaces which lay out all the possible features and paths to more features, voice-based user interfaces rely on interfacing through voice. Therefore, its approach of one intent as an input and one result as an output makes it difficult for the user to understand or know the possible features of a voice user-based interface application, as it does not present all the features a graphic interface would.
+
+## Successes
+
+On the other hand, there are examples of VUI's success. One example of this is how "[Amazon went from a handful of skills to hundreds and thousands and tens of thousands. Apple hasn't really built a developer ecosystem](https://www.cnbc.com/2019/06/04/why-siri-is-not-as-smart-as-alexa-google-assistant.html)". Amazon nurturing its third-party developer ecosystem resulted in a robust community that allowed for more creative applications and the success of its Alexa platform. In fact, some experts have concluded that [Amazon's effort to build a developer ecosystem may be the reason behind the Alexa device's high sales numbers](http://www.slashgear.com/amazon-confirms-alexa-device-sales-numbers-and-its-a-lot-05560097/).
+
+## Product's Role
+
+Another key aspect of how VUIs could become widely used is the product development process. One product development process is the product-driven process, which "[may be used for a market that is well known, where the customer needs may be predictable, and where the competition is understood](http://www.researchgate.net/publication/308402214_Product_Market_Fit_Frameworks_for_Lean_Product_Development)". The product-driven process is one approach to developing software. You have an initial idea that a product group (designers, engineers, managers) builds a robust product around, and then find a market for that product. The problem with the product-driven approach is that user feedback isn't taken into account by the time the product is released, so useless features may be developed, or key problems may not have been solved.
+
+On the other hand, there's the agile process that utilizes "[an incremental process that is used to facilitate an iterative interactive learning approach between an organization and its customers to gather insights in order to develop a successful product](http://www.researchgate.net/publication/308402214_Product_Market_Fit_Frameworks_for_Lean_Product_Development)". The agile or customer-driven process allows for customers' needs to be taken into account before development begins, which eliminates useless features and steers the product team towards developing a product that solves a user's problem. In terms of voice user interfaces, because spoken language understanding is just now becoming stable, it's hard to imagine there is enough maturity to yield solutions to every user problem. While it's difficult to determine which product development process existing VUI-based products and features have used, by utilizing the agile process, product teams will be more capable of finding good applications for VUI, as the newer and iterative agile process [typically results in higher product success rates compared to Waterfall](http://vitalitychicago.com/essays/agile-projects-are-more-successful-traditional-projects/).
+
+## The Future
+
+Next, in terms of possible improvements to VUI, it's important to consider future research developments. Jinyu Li, an IEEE member and scientist at Microsoft, believes that ["the inherent links between and distinctions among the myriad of methods for noise-robust ASR have yet to be carefully studied to advance the field further"](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6570655). As touched on earlier, one problem with VUIs is that their functionality is limited by how quiet or noisy an area is. With ASR just emerging from its infancy, as Li describes, there hasn't been much research into even the advantages and disadvantages of specific methods for solving the problem of ASR being unable to work in noisy areas. Ultimately, in addition to the possibility of VUI being unrestricted to quiet areas, Li's quote indicates that since VUI is at its dawn, as more research is done, different technical problems abating the adoption of VUIs could find solutions.
+
+Additionally, for VUIs to achieve widespread adoption, their APIs must be opened up. In fact, with ["SiriKit for audio apps, Spotify can now behave like Apple Music when it comes to Siri commands on iOS"](http://9to5mac.com/2019/10/07/you-can-now-ask-siri-to-play-spotify-music-on-ios-13-spotify-debuts-apple-tv-app/). Indeed, before SiriKit for audio apps was released, the only music app Siri could interact with was Apple Music. While SiriKit for audio apps is one example, making other facets of the Siri API public would allow Siri to be a platform, which would enable third-party developers to build their applications of VUIs. In addition to this, a parallel could be drawn between the current state of VUI services like Siri and that of mobile phones before the widespread use of app stores. Moreover, an example of something becoming a platform is [Apple's very own App Store, which resulted in the 'app boom' over a decade ago](http://www.bloomberg.com/news/articles/2018-07-10/how-apple-s-app-store-changed-our-world) and differentiated the iPhone from its competitors. In conclusion, virtual assistants such as Siri or Amazon Alexa with open APIs could be one way to usher in the widespread adoption of VUIs.
+
+## Conclusion
+
+In conclusion, aside from SLU products and features being relatively new to the market, the tangible obstacles that lie between us and our progress toward widespread adoption of VUIs stem from current technical limitations coupled with use cases that are incongruent with the current technical capabilities of VUI. However, the adoption of VUIs could be improved by implementing research findings, opening up private APIs, and utilizing the agile development process.
+
+<span style={{ color: "rgba(120, 119, 116, 1)" }}>
+
+  <a
+    href="https://docs.google.com/document/d/1JzueiEkACfeQDFeopIalV88C2YauSxqSxQySWrTp_rA/edit?usp=sharing"
+    style={{
+      color: "rgba(120, 119, 116, 1)",
+      textDecoration: "underline"
+    }}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Boston - February 25, 2020
+  </a>
+</span>
