@@ -180,9 +180,29 @@ table {
 .katex-display {
   margin: 1.5em 0;
   font-size: 1.15em;
-  color: #222;
+  color: #222; /* matches prose text-neutral-800 */
   background: transparent;
 }
 .katex {
-  color: #222;
+  color: #222; /* matches prose text-neutral-800 */
+}
+
+/* Dark mode styles for KaTeX */
+@media (prefers-color-scheme: dark) {
+  .katex-display {
+    color: #e5e7eb; /* matches prose dark:text-neutral-200 */
+    background: transparent;
+  }
+  .katex {
+    color: #e5e7eb; /* matches prose dark:text-neutral-200 */
+  }
+}
+
+/* If you use a .dark class for dark mode */
+.dark .katex-display {
+  color: #e5e7eb; /* matches prose dark:text-neutral-200 */
+  background: transparent;
+}
+.dark .katex {
+  color: #e5e7eb; /* matches prose dark:text-neutral-200 */
 }
