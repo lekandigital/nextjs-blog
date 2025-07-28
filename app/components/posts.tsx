@@ -26,7 +26,9 @@ export function EssaysPosts({ slugs }: { slugs?: string[] } = {}) {
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
             <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-              {post.metadata.title}
+              {slugs
+                ? post.metadata.title.replace(/^\d+\s*-\s*/, '') // Home page: remove number
+                : post.metadata.title}
             </p>
           </div>
         </Link>
