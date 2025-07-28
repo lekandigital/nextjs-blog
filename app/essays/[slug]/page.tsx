@@ -83,9 +83,8 @@ export default function Essays({ params }) {
         }}
       />
       <h1 className="title font-semibold text-2xl tracking-tighter">
-        {post.metadata.title}
+        {post.metadata.title.replace(/^\d+\s*-\s*/, '')}
       </h1>
-      {/* Removed date */}
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>

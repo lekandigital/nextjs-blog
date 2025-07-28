@@ -5,12 +5,10 @@ export function EssaysPosts({ slugs }: { slugs?: string[] } = {}) {
   let allEssayss = getEssaysPosts()
   if (slugs) {
     allEssayss = allEssayss.filter(post => slugs.includes(post.slug))
-    // Sort by the order in slugs array
     allEssayss = allEssayss.sort(
       (a, b) => slugs.indexOf(a.slug) - slugs.indexOf(b.slug)
     )
   } else {
-    // Default: sort by published date descending
     allEssayss = allEssayss.sort(
       (a, b) =>
         new Date(b.metadata.publishedAt).getTime() -
