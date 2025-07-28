@@ -7,7 +7,7 @@ export default function Page() {
        Lekan
      </h1>
      <p className="mb-4">
-       {`I'm a CS/Physics undergrad. I've shipped production AI systems since high school including a `}
+       {`I'm a CS/Physics undergrad on leave. I've shipped production AI systems since high school including a `}
        <a href="https://github.com/lekanadeyeri/Single-File-Library-for-Python-Alexa-Skills" className="underline">chatbot for decentralized clinical trials</a>
        {` deployed at eResearch Technology (acquired by Clario). I've published `}
        <a href="https://scholar.google.com/citations?user=VxTWNqgAAAAJ" className="underline">deep learning research at Stanford</a>
@@ -16,8 +16,8 @@ export default function Page() {
        {`. I've interned as SWE+PM at `}
        <a href="http://microsoft.com/" className="underline">Microsoft</a>
        {` working with GPT-3 and microservices, and been recognized as a Kleiner Perkins Engineering Fellowship Finalist and `}
-       <a href="https://twitter.com/BessemerVP/status/1547271355539734528" className="underline">Bessemer Venture Partners Fellow</a>
-       {` before taking a break to explore emerging technologies unconstrained. Previously, I've built `}
+       <a href="https://twitter.com/BessemerVP/status/1547271355539734528" className="underline">Bessemer Venture Partners Fellow participant</a>
+       {` before taking a break for reasons including exploring emerging technologies unconstrained. Previously, I've built `}
        <a href="https://github.com/lekanadeyeri/Commonwealth-Honors-Project" className="underline">computer vision tools for autism support</a>
        {`, grocery carpooling platforms with 450+ users in one target location with a $30 budget, and `}
        <a href="https://github.com/lekandigital/InjuryEmotion" className="underline">hackathon-winning worker sentiment analysis systems</a>
