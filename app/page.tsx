@@ -27,7 +27,7 @@ export default function Page() {
        <h2 className="mb-4 text-xl font-semibold tracking-tight">
          Selected Essays
        </h2>
-       <EssaysPosts />
+       <EssaysPosts slugs={['4', '2', '10', '9', '1']} />
      </div>
    </section>
  )
