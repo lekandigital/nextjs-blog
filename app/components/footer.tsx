@@ -24,6 +24,17 @@ export default function Footer() {
         <li>
           <a
             className="footer-link"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://1001ud.me"
+          >
+            <ArrowIcon />
+            <span>daily blog</span>
+          </a>
+        </li>
+        <li>
+          <a
+            className="footer-link"
             href="mailto:lekanadeyeri@gmail.com"
           >
             <ArrowIcon />
@@ -50,6 +61,17 @@ export default function Footer() {
           >
             <ArrowIcon />
             <span>instagram</span>
+          </a>
+        </li>
+        <li>
+          <a
+            className="footer-link"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.producthunt.com/@lekan_digital"
+          >
+            <ArrowIcon />
+            <span>product hunt</span>
           </a>
         </li>
         <li>

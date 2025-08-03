@@ -235,36 +235,68 @@ a:hover {
 
 /* Footer */
 .footer {
-    margin-top: 64px;
-    padding-top: 32px;
+    margin-top: 80px;
+    padding-top: 40px;
+    /* border-top: 1px solid #e0e0e0; */
 }
 
 .footer-list {
     display: flex;
-    flex-direction: row;
-    gap: 24px;
+    flex-wrap: wrap;
+    gap: 20px 32px;
     font-size: 14px;
     color: #6b7280;
     list-style: none;
+    max-width: 100%;
+    justify-content: flex-start;
 }
 
 .footer-link {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: #6b7280;
     text-decoration: none;
     transition: color 0.15s ease;
+    white-space: nowrap;
+    padding: 4px 0;
 }
 
 .footer-link:hover {
     color: #1a1a1a;
 }
 
-/* Responsive footer - vertical on mobile */
+/* Responsive footer - better organization for multiple links */
+@media (max-width: 1024px) {
+    .footer-list {
+        gap: 16px 24px;
+    }
+}
+
 @media (max-width: 768px) {
+    .footer {
+        margin-top: 60px;
+        padding-top: 32px;
+    }
+    
     .footer-list {
         flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .footer-link {
+        padding: 8px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-list {
+        gap: 8px;
+    }
+    
+    .footer-link {
+        padding: 6px 0;
         gap: 8px;
     }
 }
@@ -278,6 +310,10 @@ a:hover {
     
     h1, h2, h3, h4 {
         color: #f9fafb;
+    }
+    
+    p {
+        color: #6b7280;
     }
     
     .card {
@@ -306,6 +342,33 @@ a:hover {
         color: #f9fafb;
     }
     
+    .post-summary {
+        color: #6b7280;
+    }
+    
+    .post-date {
+        color: #9ca3af;
+    }
+    
+    .article p {
+        color: rgb(218, 221, 226);
+    }
+    
+    .article a {
+        color: #6b7280;
+    }
+    
+    .article a:hover {
+        color: rgb(218, 221, 226);
+    }
+    
+    .article h1, 
+    .article h2, 
+    .article h3, 
+    .article h4 {
+        color: #f9fafb;
+    }
+    
     .article blockquote {
         border-left-color: #374151;
         color: #9ca3af;
@@ -327,11 +390,11 @@ a:hover {
     }
     
     a {
-        color: #e5e7eb;
+        color: rgb(218, 221, 226);
     }
     
     a:hover {
-        color: #9ca3af;
+        color: #6b7280;
     }
     
     .footer-list {
@@ -339,16 +402,34 @@ a:hover {
     }
     
     .footer-link {
-        color: #9ca3af;
+        color: rgb(218, 221, 226);
     }
     
     .footer-link:hover {
-        color: #e5e7eb;
+        color: #6b7280;
+    }
+    
+    .footer {
+        /* border-top-color: #374151; */
     }
     
     /* Essay Navigation dark mode */
     div[style*="borderTop: '1px solid #e0e0e0'"] {
         border-top-color: #374151 !important;
+    }
+    
+    /* Essay Navigation links and text - target by color values */
+    div a[style*="color: #6b7280"] {
+        color: rgb(218, 221, 226) !important;
+    }
+    
+    div a[style*="color: #6b7280"]:hover {
+        color: #6b7280 !important;
+    }
+    
+    /* Essay Navigation counter text */
+    div[style*="color: #9ca3af"][style*="textAlign: center"] {
+        color: rgb(218, 221, 226) !important;
     }
 }
 
