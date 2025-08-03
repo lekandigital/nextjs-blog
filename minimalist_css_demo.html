@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist UI Components Demo</title>
+    <style>
+        /* ========== MINIMALIST CSS FRAMEWORK ========== */
+        
+        /* Reset and Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+            margin-bottom: 48px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        p {
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+
+        /* Cards and Panels */
+        .card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .panel {
+            background: #fafafa;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Buttons */
+        .btn {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #333333;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn-secondary:hover {
+            background: #f9fafb;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+
+        /* Form Elements */
+        .input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.15s ease;
+            outline: none;
+            background: white;
+        }
+
+        .input:focus {
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+        }
+
+        .input::placeholder {
+            color: #9ca3af;
+        }
+
+        /* Labels */
+        .label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Sliders */
+        .slider {
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: #e5e7eb;
+            outline: none;
+            appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Control Groups */
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            padding: 16px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Tags */
+        .tag {
+            background: #1a1a1a;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-light {
+            background: #f3f4f6;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        /* Stats Grid */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Legend Items */
+        .legend {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .legend-circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-line {
+            width: 20px;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        /* Utilities */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        .mb-8 { margin-bottom: 8px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-24 { margin-bottom: 24px; }
+        .mb-32 { margin-bottom: 32px; }
+
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .gap-8 { gap: 8px; }
+        .gap-16 { gap: 16px; }
+
+        /* Colors */
+        .bg-gray-50 { background-color: #f9fafb; }
+        .bg-gray-100 { background-color: #f3f4f6; }
+        .text-gray-600 { color: #6b7280; }
+        .text-gray-900 { color: #1a1a1a; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            h1 {
+                font-size: 28px;
+                margin-bottom: 32px;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Minimalist UI Components</h1>
+        
+        <!-- Typography Demo -->
+        <div class="card">
+            <h2>Typography</h2>
+            <h3>This is a heading 3</h3>
+            <p>This is a paragraph with regular text. It uses a subtle gray color for better hierarchy and readability.</p>
+            <p class="text-gray-900">This is emphasized text in the primary color.</p>
+        </div>
+
+        <!-- Buttons Demo -->
+        <div class="card">
+            <h2>Buttons</h2>
+            <div class="flex gap-16">
+                <button class="btn">Primary Button</button>
+                <button class="btn-secondary btn">Secondary Button</button>
+                <button class="btn btn-small">Small Button</button>
+            </div>
+        </div>
+
+        <!-- Form Elements Demo -->
+        <div class="card">
+            <h2>Form Elements</h2>
+            <div class="form-group">
+                <label class="label">Email Address</label>
+                <input type="email" class="input" placeholder="Enter your email">
+            </div>
+            
+            <div class="form-group">
+                <label class="label">Message</label>
+                <textarea class="input" rows="4" placeholder="Type your message here..."></textarea>
+            </div>
+
+            <div class="control-group">
+                <label class="label">Volume:</label>
+                <input type="range" class="slider" min="0" max="100" value="50" style="width: 200px;">
+                <span>50</span>
+            </div>
+        </div>
+
+        <!-- Controls Demo -->
+        <div class="card">
+            <h2>Control Groups</h2>
+            <div class="controls">
+                <div class="control-group">
+                    <label class="label">Setting 1:</label>
+                    <input type="range" class="slider" min="0" max="100" value="30" style="width: 120px;">
+                    <span>30</span>
+                </div>
+                
+                <div class="control-group">
+                    <label class="label">Setting 2:</label>
+                    <input type="range" class="slider" min="0" max="100" value="70" style="width: 120px;">
+                    <span>70</span>
+                </div>
+                
+                <div class="control-group">
+                    <button class="btn btn-small">Apply</button>
+                    <button class="btn-secondary btn btn-small">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tags Demo -->
+        <div class="card">
+            <h2>Tags</h2>
+            <div class="flex gap-8 mb-16">
+                <span class="tag">Active</span>
+                <span class="tag">Processing</span>
+                <span class="tag">Complete</span>
+            </div>
+            
+            <div class="flex gap-8">
+                <span class="tag-light tag">Draft</span>
+                <span class="tag-light tag">Pending</span>
+                <span class="tag-light tag">Review</span>
+            </div>
+        </div>
+
+        <!-- Stats Demo -->
+        <div class="card">
+            <h2>Statistics Grid</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value">1,234</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">567</div>
+                    <div class="stat-label">Active Sessions</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">89%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend Demo -->
+        <div class="card">
+            <h2>Legend Components</h2>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-circle" style="background: #1a1a1a;"></div>
+                    <span>Active</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background: #6b7280;"></div>
+                    <span>Inactive</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #dc2626;"></div>
+                    <span>Error</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #2563eb;"></div>
+                    <span>Success</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #7c3aed;"></div>
+                    <span>Warning</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel Demo -->
+        <div class="panel">
+            <h3>Information Panel</h3>
+            <p>This is a subtle panel with a light background, perfect for containing secondary information or grouped content.</p>
+            <div class="flex gap-16">
+                <button class="btn btn-small">Action</button>
+                <button class="btn-secondary btn btn-small">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

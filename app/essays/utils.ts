@@ -88,3 +88,9 @@ export function formatDate(date: string, includeRelative = false) {
 
   return `${fullDate} (${formattedDate})`
 }
+
+// Add this function to your existing utils
+export function checkAudioExists(slug: string): boolean {
+  const audioPath = path.join(process.cwd(), 'public', 'audio', `${slug}-1.mp3`)
+  return fs.existsSync(audioPath)
+}

@@ -1,11 +1,358 @@
 @import 'tailwindcss';
 /* @import '/fonts/katex.min.css'; */
 
-::selection {
-  background-color: #47a3f3;
-  color: #fffafa;
+/* ========== MINIMALIST CSS FRAMEWORK ========== */
+
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+/* Typography */
+h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+p {
+    color: #6b7280;
+    margin-bottom: 16px;
+}
+
+/* Cards and Panels */
+.card {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 32px;
+}
+
+.panel {
+    background: #fafafa;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Links */
+a {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+a:hover {
+    color: #6b7280;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 16px 0;
+    /* border-bottom: 1px solid #e0e0e0; */
+}
+
+.nav a {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Post Lists */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.post-item {
+    padding: 16px 0;
+    /* border-bottom: 1px solid #e0e0e0; */
+    transition: all 0.15s ease;
+}
+
+.post-item:hover {
+    background: #fafafa;
+    margin: 0 -16px;
+    padding: 16px;
+    border-radius: 8px;
+    /* border-bottom: 1px solid transparent; */
+}
+
+.post-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.post-summary {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.post-date {
+    color: #9ca3af;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Article Content */
+.article {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.article h1 {
+    font-size: 28px;
+    margin-bottom: 16px; /* Reduced from 32px */
+}
+
+.article h2 {
+    font-size: 22px;
+    margin: 32px 0 16px 0;
+}
+
+.article h3 {
+    font-size: 18px;
+    margin: 24px 0 12px 0;
+}
+
+.article h4 {
+    font-size: 16px;
+    margin: 8px 0 24px 0; /* Reduced top margin, increased bottom margin */
+}
+
+.article p {
+    margin-bottom: 16px;
+    color: #374151;
+}
+
+.article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 24px 0;
+}
+
+.article blockquote {
+    border-left: 4px solid #e0e0e0;
+    padding-left: 16px;
+    margin: 24px 0;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.article code {
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #1a1a1a;
+}
+
+.article pre {
+    background: #f9fafb;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+    margin: 16px 0;
+}
+
+.article pre code {
+    background: none;
+    padding: 0;
+}
+
+/* KaTeX Math */
+.katex-display {
+    margin: 24px 0;
+    font-size: 1.15em;
+    color: #1a1a1a;
+    background: transparent;
+}
+
+.katex {
+    color: #1a1a1a;
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+
+/* Footer */
+.footer {
+    margin-top: 64px;
+    padding-top: 32px;
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    font-size: 14px;
+    color: #6b7280;
+    list-style: none;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.footer-link:hover {
+    color: #1a1a1a;
+}
+
+/* Responsive footer - vertical on mobile */
+@media (max-width: 768px) {
+    .footer-list {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #0f0f0f;
+        color: #e5e7eb;
+    }
+    
+    h1, h2, h3, h4 {
+        color: #f9fafb;
+    }
+    
+    .card {
+        background: #1f1f1f;
+        border-color: #374151;
+    }
+    
+    .panel {
+        background: #1f1f1f;
+        border-color: #374151;
+    }
+    
+    .nav {
+        border-bottom-color: #374151;
+    }
+    
+    .post-item {
+        border-bottom-color: #374151;
+    }
+    
+    .post-item:hover {
+        background: #1f1f1f;
+    }
+    
+    .post-title {
+        color: #f9fafb;
+    }
+    
+    .article blockquote {
+        border-left-color: #374151;
+        color: #9ca3af;
+    }
+    
+    .article code {
+        background: #374151;
+        color: #e5e7eb;
+    }
+    
+    .article pre {
+        background: #1f1f1f;
+        border-color: #374151;
+    }
+    
+    .katex-display,
+    .katex {
+        color: #e5e7eb;
+    }
+    
+    a {
+        color: #e5e7eb;
+    }
+    
+    a:hover {
+        color: #9ca3af;
+    }
+    
+    .footer-list {
+        color: #9ca3af;
+    }
+    
+    .footer-link {
+        color: #9ca3af;
+    }
+    
+    .footer-link:hover {
+        color: #e5e7eb;
+    }
+    
+    /* Essay Navigation dark mode */
+    div[style*="borderTop: '1px solid #e0e0e0'"] {
+        border-top-color: #374151 !important;
+    }
+}
+
+/* Syntax highlighting (keeping your existing variables) */
 :root {
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
@@ -25,184 +372,91 @@
     --sh-keyword: #f47067;
     --sh-string: #0fa295;
   }
-  html {
-    color-scheme: dark;
-  }
 }
 
-html {
-  min-width: 360px;
+::selection {
+  background-color: #47a3f3;
+  color: #fffafa;
 }
 
-.prose .anchor {
-  @apply absolute invisible no-underline;
+/* Add this to your existing CSS */
 
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
-  cursor: pointer;
+/* Filter scroll styling */
+div[style*="overflowX: auto"]::-webkit-scrollbar {
+    height: 6px;
 }
 
-.anchor:hover {
-  @apply visible;
+div[style*="overflowX: auto"]::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
 }
 
-.prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+div[style*="overflowX: auto"]::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
 }
 
-.prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
-  content: '#';
+div[style*="overflowX: auto"]::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
 }
 
-.prose *:hover > .anchor {
-  @apply visible;
-}
-
-.prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
-}
-
-.prose code {
-  @apply px-1 py-0.5 rounded-lg;
-}
-
-.prose pre code {
-  @apply p-0;
-  border: initial;
-  line-height: 1.5;
-}
-
-.prose code span {
-  @apply font-medium;
-}
-
-.prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
-}
-
-.prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
-}
-
-.prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose strong {
-  @apply font-medium;
-}
-
-.prose ul {
-  @apply list-disc pl-6;
-}
-
-.prose ol {
-  @apply list-decimal pl-6;
-}
-
-.prose > :first-child {
-  /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.title {
-  text-wrap: balance;
-}
-
-.prose blockquote {
-  border-left: 4px solid #10b981; /* emerald-500 */
-  padding-left: 1rem; /* pl-4 */
-  font-style: italic;
-  color: #064e3b; /* emerald-950 */
-  background-color: #ecfdf5; /* emerald-50 */
-  margin: 1.5rem 0; /* my-6 */
-  padding-top: 0.5rem; /* py-2 */
-  padding-bottom: 0.5rem;
-}
-
-/* Dark mode styles */
+/* Dark mode filter styling */
 @media (prefers-color-scheme: dark) {
-  .prose blockquote {
-    border-left-color: #9ca3af; /* gray-400 */
-    color: #f9fafb; /* gray-100 */
-    background-color: #1f2937; /* gray-800 */
-  }
+    div[style*="overflowX: auto"]::-webkit-scrollbar-track {
+        background: #374151;
+    }
+    
+    div[style*="overflowX: auto"]::-webkit-scrollbar-thumb {
+        background: #6b7280;
+    }
+    
+    div[style*="overflowX: auto"]::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
+    }
 }
 
-/* Alternative: If you're using a dark mode class instead of media query */
-.dark .prose blockquote {
-  border-left-color: #9ca3af; /* gray-400 */
-  color: #f9fafb; /* gray-100 */
-  background-color: #1f2937; /* gray-800 */
+/* Filter fade effects */
+.filter-container {
+    position: relative;
 }
 
-.katex-display {
-  margin: 1.5em 0;
-  font-size: 1.15em;
-  color: #222; /* matches prose text-neutral-800 */
-  background: transparent;
-}
-.katex {
-  color: #222; /* matches prose text-neutral-800 */
+.filter-container::before,
+.filter-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 8px; /* Account for scrollbar padding */
+    width: 20px;
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Dark mode styles for KaTeX */
+.filter-container::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+}
+
+.filter-container::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0));
+}
+
+/* Dark mode fade effects */
 @media (prefers-color-scheme: dark) {
-  .katex-display {
-    color: #e5e7eb; /* matches prose dark:text-neutral-200 */
-    background: transparent;
-  }
-  .katex {
-    color: #e5e7eb; /* matches prose dark:text-neutral-200 */
-  }
+    .filter-container::before {
+        background: linear-gradient(to right, #0f0f0f, rgba(15, 15, 15, 0));
+    }
+    
+    .filter-container::after {
+        background: linear-gradient(to left, #0f0f0f, rgba(15, 15, 15, 0));
+    }
 }
 
-/* If you use a .dark class for dark mode */
-.dark .katex-display {
-  color: #e5e7eb; /* matches prose dark:text-neutral-200 */
-  background: transparent;
+/* Hide scrollbar utility */
+.hide-scrollbar {
+    -webkit-overflow-scrolling: touch;
 }
-.dark .katex {
-  color: #e5e7eb; /* matches prose dark:text-neutral-200 */
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
 }

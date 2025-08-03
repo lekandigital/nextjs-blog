@@ -1,4 +1,5 @@
-import { EssaysPosts } from 'app/components/posts'
+import { getEssaysPosts } from 'app/essays/utils'
+import { EssayFilter } from 'app/components/essay-filter'
 
 export const metadata = {
   title: 'Essays',
@@ -6,9 +7,12 @@ export const metadata = {
 }
 
 export default function Page() {
+  const allPosts = getEssaysPosts()
+
   return (
-    <section>
-      <EssaysPosts />
-    </section>
+    <div>
+      <h1 className="mb-24">Essays</h1>
+      <EssayFilter allPosts={allPosts} />
+    </div>
   )
 }

@@ -1,3 +1,5 @@
+"use client"
+
 function ArrowIcon() {
   return (
     <svg
@@ -17,72 +19,48 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+    <footer className="footer">
+      <ul className="footer-list">
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            className="footer-link"
             href="mailto:lekanadeyeri@gmail.com"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">email (preferred)</p>
-          </a>
-        </li>
-        {/* 
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://gfg.gg/resume"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">resume</p>
+            <span>email (preferred)</span>
           </a>
         </li>
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://1001ud.me"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">journal</p>
-          </a>
-        </li>
-        */}
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            className="footer-link"
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/lekandigital"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
+            <span>github</span>
           </a>
         </li>
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            className="footer-link"
             rel="noopener noreferrer"
             target="_blank"
             href="https://instagram.com/lekan.jpg"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">instagram</p>
+            <span>instagram</span>
           </a>
         </li>
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            className="footer-link"
             rel="noopener noreferrer"
             target="_blank"
             href="https://x.com/lekan_digital"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">x</p>
+            <span>x</span>
           </a>
         </li>
       </ul>

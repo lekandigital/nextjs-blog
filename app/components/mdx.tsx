@@ -89,6 +89,51 @@ function createHeading(level) {
   return Heading
 }
 
+// Create a custom H4 component that can include audio player
+function createH4WithAudio(audioPlayerComponent) {
+  const H4WithAudio = ({ children }) => {
+    let slug = slugify(children)
+
+    console.log('H4WithAudio rendered:', { children, hasAudio: !!audioPlayerComponent })
+
+    return (
+      <>
+        <h4 id={slug}>
+          <a href={`#${slug}`} className="anchor" />
+          {children}
+        </h4>
+        {audioPlayerComponent}
+      </>
+    )
+  }
+
+  H4WithAudio.displayName = 'H4WithAudio'
+  return H4WithAudio
+}
+
+// Create a custom IMG component that can include audio player after main image
+function createMainImageWithAudio(audioPlayerComponent) {
+  const ImgWithAudio = (props) => {
+    const isMainImage = props.alt === 'Main image'
+
+    console.log('ImgWithAudio rendered:', { alt: props.alt, isMainImage, hasAudio: !!audioPlayerComponent })
+
+    if (isMainImage && audioPlayerComponent) {
+      return (
+        <>
+          <img {...props} />
+          {audioPlayerComponent}
+        </>
+      )
+    }
+
+    return <img {...props} />
+  }
+
+  ImgWithAudio.displayName = 'ImgWithAudio'
+  return ImgWithAudio
+}
+
 let components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -97,6 +142,7 @@ let components = {
   h5: createHeading(5),
   h6: createHeading(6),
   Image: RoundedImage,
+  img: (props) => <img {...props} />, // Add default img handler
   a: CustomLink,
   code: Code,
   Table,
@@ -116,3 +162,5 @@ export function CustomMDX(props) {
     />
   )
 }
+
+export { createH4WithAudio, createMainImageWithAudio }
