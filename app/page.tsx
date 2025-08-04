@@ -9,6 +9,12 @@ export default function Page() {
       <h1 className="mb-32">
         Lekan
       </h1>
+      <div className="mb-32">
+        <h2 className="mb-24">
+          Selected Essays
+        </h2>
+        <EssaysPosts allPosts={allPosts} slugs={['4', '2', '10', '9', '1']} />
+      </div>
       <p className="mb-16">
         {`I'm a CS/Physics undergrad on leave. I've shipped production AI systems since high school including a `}
         <a href="https://github.com/lekanadeyeri/Single-File-Library-for-Python-Alexa-Skills">chatbot for decentralized clinical trials</a>
@@ -26,12 +32,6 @@ export default function Page() {
         <a href="https://github.com/lekandigital/InjuryEmotion">hackathon-winning worker sentiment analysis systems</a>
         {` using computer vision in industrial contexts. I focus on building systems that amplify human creativity rather than replace it.`}
       </p>
-      <div className="mb-32">
-        <h2 className="mb-24">
-          Selected Essays
-        </h2>
-        <EssaysPosts allPosts={allPosts} slugs={['4', '2', '10', '9', '1']} />
-      </div>
     </section>
   )
 }
