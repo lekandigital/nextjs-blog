@@ -19,10 +19,6 @@ This project is based on the [Vercel Portfolio Blog Starter](https://github.com/
 - **MDX Support**: Write essays and posts in MDX for maximum flexibility.
 - **Performance**: Retains all original optimizations (SEO, OG images, RSS, etc.)
 
-## Demo
-
-https://portfolio-essays-starter.vercel.app
-
 ## How to Use
 
 1. **Install dependencies:**
