@@ -1,15 +1,23 @@
-# Portfolio Essays Starter
+# Portfolio Essays Template
 
-This is a porfolio site template complete with a essays. Includes:
+This project is based on the [Vercel Portfolio Blog Starter](https://github.com/vercel/examples/tree/main/solutions/blog) but has been significantly extended and refactored to serve as a modern, minimalist, and highly customizable portfolio/blog template.
 
-- MDX and Markdown support
-- Optimized for SEO (sitemap, robots, JSON-LD schema)
-- RSS Feed
-- Dynamic OG images
-- Syntax highlighting
-- Tailwind v4
-- Vercel Speed Insights / Web Analytics
-- Geist font
+## Original Repo
+
+- [Vercel Portfolio Blog Starter](https://github.com/vercel/examples/tree/main/solutions/blog)
+
+## Major Changes & Additions
+
+- **Essays System**: Reworked the blog into an "essays"-focused system, with MDX support for long-form writing.
+- **Dark/Light Mode**: Complete support for both modes, with carefully tuned CSS variables and color schemes for accessibility and aesthetics.
+- **Essay Filter**: Custom filter menu with smooth transitions, fade effects, and improved scrollbar styling for both modes. Borders and box-shadows removed for a minimalist look.
+- **Typography & Spacing**: Improved vertical and horizontal spacing, minimalist headings, and long-form text readability.
+- **Footer**: Alphabetized, expanded, and restyled footer links for clarity and modern appearance. Footer border removed for a cleaner look.
+- **Essay Navigation**: Enhanced navigation with better color contrast and hover states in both modes.
+- **Long-form Text**: Distinct color schemes for summaries, about page, and essay detail pages, with special attention to link and hover colors.
+- **Accessibility**: Improved color contrast and focus states for interactive elements.
+- **MDX Support**: Write essays and posts in MDX for maximum flexibility.
+- **Performance**: Retains all original optimizations (SEO, OG images, RSS, etc.)
 
 ## Demo
 
@@ -17,26 +25,23 @@ https://portfolio-essays-starter.vercel.app
 
 ## How to Use
 
-You can choose from one of the following two methods to use this repository:
+1. **Install dependencies:**
+   ```bash
+   pnpm install
+   ```
+2. **Run locally:**
+   ```bash
+   pnpm dev
+   ```
+3. **Deploy:**
+   Deploy to [Vercel](https://vercel.com/) or your preferred platform.
 
-### One-Click Deploy
+## Customization
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+- All styles are in `app/global.css` and use CSS variables for easy theming.
+- Essays are in `app/essays/posts/` as MDX files.
+- Components are in `app/components/` and are easy to extend or replace.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/essays&project-name=essays&repository-name=essays)
+---
 
-### Clone and Deploy
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
-
-```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/essays essays
-```
-
-Then, run Next.js in development mode:
-
-```bash
-pnpm dev
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/templates) ([Documentation](https://nextjs.org/docs/app/building-your-application/deploying)).
+This project is intended to be used as a template for your own portfolio, blog, or digital garden. Fork it, customize it, and make it your own!
