@@ -10,7 +10,7 @@ export default function Page() {
         Lekan
       </h1>
       <p className="mb-16">
-        {`I'm a CS/Physics undergrad on leave. I've shipped production AI systems since high school including a `}
+        {`I'm a CS/Physics undergrad on leave ☹️. I've shipped production AI systems since high school including a `}
         <a href="https://github.com/lekanadeyeri/Single-File-Library-for-Python-Alexa-Skills">chatbot for decentralized clinical trials</a>
         {` deployed at `}
         <a href="https://www.scribd.com/document/747619642/Programs-STC-2016-Tech-Apprentice-Program-Summary">eResearch Technology</a>
