@@ -84,7 +84,7 @@
             background-color: #f3f4f6;
             padding: 16px;
             border-radius: 6px;
-            border-left: 3px solid #3b82f6;
+            border-left: 3px solid #2563eb;
             margin: 16px 0;
         }
 
@@ -105,7 +105,7 @@
 
         .location {
             font-weight: 600;
-            color: #1d4ed8;
+            color: #1e40af;
         }
 
         .button {
@@ -123,7 +123,7 @@
         }
 
         .button:hover {
-            background-color: #1d4ed8;
+            background-color: #1e40af;
         }
 
         .button-secondary {
@@ -151,7 +151,7 @@
             border: 1px solid #e5e7eb;
             border-radius: 8px;
             padding: 16px 24px;
-            margin-bottom: 24px; /* Suitable bottom margin for narrow (dropdown) view */
+            margin-bottom: 24px; /* Improved bottom margin for narrow (dropdown) view */
             position: relative;
         }
 
@@ -180,7 +180,7 @@
         .table-of-contents ul {
             list-style: none;
             padding: 0;
-            margin: 16px 0 0 0;
+            margin: 0;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
@@ -188,6 +188,7 @@
 
         .table-of-contents ul.open {
             max-height: 300px;
+            margin-top: 16px;
         }
 
         .table-of-contents li {
@@ -204,7 +205,7 @@
         }
 
         .table-of-contents a:hover {
-            color: #3b82f6;
+            color: #2563eb;
         }
 
         h2 {
@@ -217,20 +218,20 @@
         }
 
         h2:hover {
-            color: #3b82f6;
+            color: #2563eb;
         }
 
         .reference-link {
-            color: #3b82f6;
+            color: #2563eb;
             text-decoration: none;
             font-weight: 500;
-            border-bottom: 1px dotted #3b82f6;
+            border-bottom: 1px dotted #2563eb;
             transition: all 0.2s;
         }
 
         .reference-link:hover {
-            color: #1d4ed8;
-            border-bottom: 1px solid #1d4ed8;
+            color: #1e40af;
+            border-bottom: 1px solid #1e40af;
             background-color: #eff6ff;
             padding: 1px 2px;
             border-radius: 2px;
@@ -297,6 +298,7 @@
             .table-of-contents ul {
                 max-height: none; /* Always show the list */
                 overflow: visible;
+                margin-top: 16px; /* Restore margin for desktop view */
             }
             .dropdown-arrow {
                 display: none; /* Hide the arrow */
