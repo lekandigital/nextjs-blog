@@ -20,9 +20,13 @@
         }
 
         .container {
-            max-width: 768px;
+            max-width: 1100px; /* Increased max-width to accommodate sidebar */
             margin: 0 auto;
             padding: 32px 24px;
+        }
+
+        .layout-wrapper {
+            position: relative;
         }
 
         .document {
@@ -31,6 +35,7 @@
             border-radius: 8px;
             padding: 32px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            min-width: 0; /* Fix for flexbox overflow */
         }
 
         h1 {
@@ -60,6 +65,10 @@
             margin-bottom: 16px;
             color: #374151;
         }
+        
+        p:last-child {
+            margin-bottom: 0;
+        }
 
         .greeting {
             font-size: 18px;
@@ -75,8 +84,12 @@
             background-color: #f3f4f6;
             padding: 16px;
             border-radius: 6px;
-            border-left: 3px solid #10b981;
+            border-left: 3px solid #3b82f6;
             margin: 16px 0;
+        }
+
+        .highlight > p {
+            margin-bottom: 0; /* Ensures consistent spacing is handled by the parent */
         }
 
         .metrics {
@@ -92,12 +105,12 @@
 
         .location {
             font-weight: 600;
-            color: #059669;
+            color: #1d4ed8;
         }
 
         .button {
             display: inline-block;
-            background-color: #10b981;
+            background-color: #2563eb;
             color: white;
             padding: 12px 24px;
             border-radius: 6px;
@@ -110,7 +123,7 @@
         }
 
         .button:hover {
-            background-color: #059669;
+            background-color: #1d4ed8;
         }
 
         .button-secondary {
@@ -131,6 +144,100 @@
             text-align: center;
             color: #6b7280;
             font-size: 14px;
+        }
+
+        .table-of-contents {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin-bottom: 24px; /* Suitable bottom margin for narrow (dropdown) view */
+            position: relative;
+        }
+
+        .table-of-contents h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.2s;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .dropdown-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .table-of-contents ul.open {
+            max-height: 300px;
+        }
+
+        .table-of-contents li {
+            margin: 8px 0;
+        }
+
+        .table-of-contents a {
+            color: #374151;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 4px 0;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .table-of-contents a:hover {
+            color: #3b82f6;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin: 32px 0 16px 0;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        h2:hover {
+            color: #3b82f6;
+        }
+
+        .reference-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #3b82f6;
+            transition: all 0.2s;
+        }
+
+        .reference-link:hover {
+            color: #1d4ed8;
+            border-bottom: 1px solid #1d4ed8;
+            background-color: #eff6ff;
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         ul {
@@ -163,88 +270,151 @@
             font-size: 14px;
             font-weight: 500;
         }
+
+        /* Styles for wider screens */
+        @media (min-width: 1024px) {
+            .layout-wrapper {
+                display: flex;
+                align-items: flex-start;
+                gap: 48px;
+            }
+            .document {
+                flex: 1;
+                order: 1; /* Document appears on the left */
+            }
+            .table-of-contents {
+                position: sticky;
+                top: 32px; /* Distance from top on scroll */
+                flex: 0 0 240px; /* Does not grow or shrink, fixed width */
+                margin-bottom: 0;
+                order: 2; /* Table of Contents appears on the right */
+            }
+            .table-of-contents h3 {
+                cursor: default;
+                padding-bottom: 16px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            .table-of-contents ul {
+                max-height: none; /* Always show the list */
+                overflow: visible;
+            }
+            .dropdown-arrow {
+                display: none; /* Hide the arrow */
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="document">
-            <div class="greeting">Hi there,</div>
-            
-            <p>I'm building the future of connectivity infrastructure in underserved communities while creating valuable datasets for next-generation AI systems. If you're interested in a scalable business model that combines strong unit economics with cutting-edge data collection opportunities, I'd love to share more.</p>
-
-            <div class="section">
-                <h2>Background</h2>
-                <p><strong>Quick background on why this resonates:</strong> I'm Lekan, a CS/Physics undergrad currently on leave from Pitzer College. My path started with a scholarship to Phillips Exeter Summer School for computer science, physics, and discrete math, in 8th grade, leading to work spanning voice-based clinical trial technology that was used the last time I asked, at ERT (a startup that was acquired by Clairo) my sophomore year of high school, a software engineering and product management internship at Microsoft, and published deep learning research at Stanford involving computer vision. I was recognized as a Kleiner Perkins Engineering Fellowship Finalist and participated in various tech fellowships.</p>
-                
-                <div class="tech-stack">
-                    <span class="tech-tag">Computer Science</span>
-                    <span class="tech-tag">Physics</span>
-                    <span class="tech-tag">Deep Learning</span>
-                    <span class="tech-tag">Computer Vision</span>
-                    <span class="tech-tag">Product Management</span>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Why the Micro-ISP Model Excites Me</h2>
-                <div class="highlight">
-                    <p>The financial structure is compelling with each node requiring minimal upfront capital while generating sustainable revenue (<span class="metrics">$50-80/month</span> or possibly lower vs Starlink's direct <span class="metrics">$120+/month</span>). This creates a path to bootstrap community by community, proving unit economics before scaling.</p>
-                </div>
-                
-                <p>More importantly, as satellite ISP costs decrease over time, differentiation will come from value-added services, and systematic data collection for Physics-Informed Neural Networks (PINNs) could provide that edge.</p>
-            </div>
-
-            <div class="section">
-                <h2>Geographic Focus</h2>
-                <p>I'm most interested in working within US territories, particularly <span class="location">American Samoa</span> as the primary target. American Samoa offers ideal conditions with severe connectivity gaps, US regulatory framework, and a manageable 55,000 population for piloting.</p>
-                
-                <h3>Priority Locations:</h3>
-                <ul>
-                    <li><strong class="location">American Samoa</strong> - Primary target (55,000 population, severe connectivity gaps, US regulatory framework)</li>
-                    <li><strong class="location">Appalachian regions</strong> - Strong mainland option with massive connectivity gaps and rich data opportunities</li>
-                    <li><strong class="location">Puerto Rico</strong> - Larger scale validation (3.2M people, rural underconnected areas post-hurricane)</li>
-                    <li><strong class="location">Southwest Native American reservations</strong> - Federal funding availability, severe connectivity gaps</li>
+        <div class="layout-wrapper">
+             <div class="table-of-contents">
+                <h3 onclick="toggleDropdown()">Contents <span class="dropdown-arrow" id="arrow">▼</span></h3>
+                <ul id="dropdown-content">
+                    <li><a href="#background">Background</a></li>
+                    <li><a href="#micro-isp-model">Why the Micro-ISP Model Excites Me</a></li>
+                    <li><a href="#geographic-focus">Geographic Focus</a></li>
+                    <li><a href="#data-collection">The Data Collection Opportunity</a></li>
+                    <li><a href="#technical-alignment">Technical Alignment</a></li>
+                    <li><a href="#next-steps">Next Steps</a></li>
                 </ul>
-                
-                <p><em>Less ideal due to regulatory complexity, smaller markets, or logistics challenges are other Native American reservations where federal bureaucracy can slow deployment.</em></p>
             </div>
 
-            <div class="section">
-                <h2>The Data Collection Opportunity</h2>
-                <div class="highlight">
-                    <p><strong>My core insight:</strong> expanding beyond pure ISP service to systematic data collection for PINN training. The infrastructure becomes a distributed platform for capturing human-in-the-loop data where people interact with physical systems.</p>
+            <div class="document">
+                <div class="greeting">Hi there,</div>
+                
+                <p>I'm building the future of connectivity infrastructure in underserved communities while creating valuable datasets for next-generation AI systems. If you're interested in a scalable business model that combines strong unit economics with cutting-edge data collection opportunities, I'd love to share more.</p>
+
+                <div class="section" id="background">
+                    <h2 onclick="window.location.href='#background'">Background</h2>
+                    <p><strong>Quick background on why this resonates:</strong> I'm Lekan, a CS/Physics undergrad currently on leave from Pitzer College. My path started with a scholarship to Phillips Exeter Summer School</a> for computer science, physics, and discrete math, in 8th grade, leading to work spanning <a href="https://github.com/lekanadeyeri/Single-File-Library-for-Python-Alexa-Skills" class="reference-link" target="_blank">voice-based clinical trial technology</a> that was used the last time I asked, at ERT (a startup that was acquired by Clairo) my sophomore year of high school, a <a href="https://careers.microsoft.com/students/us/en/job/1085294/Software-Engineering-Intern-Opportunities" class="reference-link" target="_blank">software engineering and product management internship at Microsoft</a>, and <a href="https://scholar.google.com/citations?user=VxTWNqgAAAAJ&hl=en&authuser=1" class="reference-link" target="_blank">published deep learning research at Stanford</a> involving computer vision. I was recognized as a Kleiner Perkins Engineering Fellowship Finalist and participated in <a href="https://x.com/BessemerVP/status/1547271355539734528" class="reference-link" target="_blank">various tech fellowships</a>.</p>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Physics</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
                 </div>
-                
-                <p>For example, a farmer's irrigation timing, planting methods, or equipment usage becomes ground truth data that anchors agricultural PINNs, preventing models from converging to mathematically consistent but practically useless solutions.</p>
-                
-                <p>The key advantage is capturing this data now from communities where high satellite startup costs (<span class="metrics">$600 equipment + $120/month</span>) create barriers to connectivity. By providing affordable access through shared infrastructure in exchange for participating in data collection tasks, we can document human practices and decision-making that would otherwise remain invisible to researchers.</p>
-                
-                <p>This human-anchored data is especially valuable in early PINN development when models aren't mature and need real-world calibration. The same principle applies to robotics (documenting human pick-and-place tasks) or anywhere humans constrain or guide physical systems governed by PDEs.</p>
-            </div>
 
-            <div class="section">
-                <h2>Technical Alignment</h2>
-                <p>Given my background in computer vision, systems architecture, and working with distributed datasets, this intersection of connectivity infrastructure and machine learning data capture is exactly where I want to focus.</p>
-                
-                <p>While PINN-related datasets may not yet match demand for LLM or computer vision data given their relative immaturity, I could potentially identify partners interested in the low-cost data we'd capture from these underconnected communities. If you have leads, I'd greatly appreciate them.</p>
-            </div>
-
-            <div class="section">
-                <h2>Next Steps</h2>
-                <p>The strong unit economics of our model, augmented by human-anchored data collection, positions this as key differentiation from satellite ISPs' cost reductions alone. I'm actively seeking strategic partners who understand the massive opportunity at the intersection of infrastructure and AI. If this resonates with you, I'd love to explore how we might work together:</p>
-                
-                <div style="margin-top: 24px;">
-                    <a href="mailto:lekanadeyeri@gmail.com" class="button">Email Me</a>
-                    <a href="https://x.com/lekan_digital" class="button button-secondary" target="_blank">X/Twitter</a>
-                    <a href="https://linkedin.com/in/lekanadeyeri" class="button button-secondary" target="_blank">LinkedIn</a>
-                    <a href="https://hy.ms" class="button button-secondary" target="_blank">Website</a>
+                <div class="section" id="micro-isp-model">
+                    <h2 onclick="window.location.href='#micro-isp-model'">Why the Micro-ISP Model Excites Me</h2>
+                    <div class="highlight">
+                        <p>The financial structure is compelling with each node requiring minimal upfront capital while generating sustainable revenue (<span class="metrics">$50-80/month</span> or possibly lower vs Starlink's direct <span class="metrics">$120+/month</span>). This creates a path to bootstrap community by community, proving unit economics before scaling.</p>
+                    </div>
+                    
+                    <p>More importantly, as satellite ISP costs decrease over time, differentiation will come from value-added services, and systematic data collection for Physics-Informed Neural Networks (PINNs) could provide that edge.</p>
                 </div>
-            </div>
 
-            <div class="footer">
-                <p>Looking forward to exploring these opportunities together.</p>
+                <div class="section" id="geographic-focus">
+                    <h2 onclick="window.location.href='#geographic-focus'">Geographic Focus</h2>
+                    <p>I'm most interested in working within US territories, particularly <span class="location">American Samoa</span> as the primary target. American Samoa offers ideal conditions with severe connectivity gaps, US regulatory framework, and a manageable 55,000 population for piloting.</p>
+                    
+                    <h3>Priority Locations:</h3>
+                    <ul>
+                        <li><strong class="location">American Samoa</strong> - Primary target (55,000 population, severe connectivity gaps, US regulatory framework)</li>
+                        <li><strong class="location">Appalachian regions</strong> - Strong mainland option with massive connectivity gaps and rich data opportunities</li>
+                        <li><strong class="location">Puerto Rico</strong> - Larger scale validation (3.2M people, rural underconnected areas post-hurricane)</li>
+                        <li><strong class="location">Southwest Native American reservations</strong> - Federal funding availability, severe connectivity gaps</li>
+                    </ul>
+                    
+                    <p><em>Less ideal due to regulatory complexity, smaller markets, or logistics challenges are other Native American reservations where federal bureaucracy can slow deployment.</em></p>
+                </div>
+
+                <div class="section" id="data-collection">
+                    <h2 onclick="window.location.href='#data-collection'">The Data Collection Opportunity</h2>
+                    <div class="highlight">
+                        <p><strong>My core insight:</strong> expanding beyond pure ISP service to systematic data collection for PINN training. The infrastructure becomes a distributed platform for capturing human-in-the-loop data where people interact with physical systems.</p>
+                    </div>
+                    
+                    <p>For example, a farmer's irrigation timing, planting methods, or equipment usage becomes ground truth data that anchors agricultural PINNs, preventing models from converging to mathematically consistent but practically useless solutions.</p>
+                    
+                    <p>The key advantage is capturing this data now from communities where high satellite startup costs (<span class="metrics">$600 equipment + $120/month</span>) create barriers to connectivity. By providing affordable access through shared infrastructure in exchange for participating in data collection tasks, we can document human practices and decision-making that would otherwise remain invisible to researchers.</p>
+                    
+                    <p>This human-anchored data is especially valuable in early PINN development when models aren't mature and need real-world calibration. The same principle applies to robotics (documenting human pick-and-place tasks) or anywhere humans constrain or guide physical systems governed by PDEs.</p>
+                </div>
+
+                <div class="section" id="technical-alignment">
+                    <h2 onclick="window.location.href='#technical-alignment'">Technical Alignment</h2>
+                    <p>Given my background in <a href="https://github.com/lekanadeyeri/Commonwealth-Honors-Project" class="reference-link" target="_blank">computer vision</a>, systems architecture, and working with distributed datasets, this intersection of connectivity infrastructure and machine learning data capture is exactly where I want to focus.</p>
+                    
+                    <p>While PINN-related datasets may not yet match demand for LLM or computer vision data given their relative immaturity, I could potentially identify partners interested in the low-cost data we'd capture from these underconnected communities. If you have leads, I'd greatly appreciate them.</p>
+                </div>
+
+                <div class="section" id="next-steps">
+                    <h2 onclick="window.location.href='#next-steps'">Next Steps</h2>
+                    <p>The strong unit economics of our model, augmented by human-anchored data collection, positions this as key differentiation from satellite ISPs' cost reductions alone. I'm actively seeking strategic partners who understand the massive opportunity at the intersection of infrastructure and AI. If this resonates with you, I'd love to explore how we might work together:</p>
+                    
+                    <div style="margin-top: 24px;">
+                        <a href="mailto:lekanadeyeri@gmail.com" class="button">Email Me</a>
+                        <a href="https://x.com/lekan_digital" class="button button-secondary" target="_blank">X/Twitter</a>
+                        <a href="https://linkedin.com/in/lekanadeyeri" class="button button-secondary" target="_blank">LinkedIn</a>
+                        <a href="https://hy.ms" class="button button-secondary" target="_blank">Website</a>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <p>Looking forward to exploring these opportunities together.</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleDropdown() {
+             // This function will only have a visible effect on screens narrower than 1024px
+            if (window.innerWidth < 1024) {
+                const dropdown = document.getElementById('dropdown-content');
+                const arrow = document.getElementById('arrow');
+                
+                dropdown.classList.toggle('open');
+                arrow.classList.toggle('open');
+            }
+        }
+
+        // Initialize dropdown state on page load for mobile.
+        // On wide screens, the list is always visible via CSS.
+        if (window.innerWidth >= 1024) {
+            document.getElementById('dropdown-content').classList.add('open');
+        }
+    </script>
 </body>
 </html>
