@@ -1,0 +1,1026 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #374151;
+    line-height: 1.6;
+    font-size: 16px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+.katex, .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: block;
+    white-space: nowrap;
+}
+
+.katex-display > .katex {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Ensure containers with KaTeX can contain their content */
+.financial-metric, .key-insight, .executive-callout {
+    overflow-x: auto;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+/* Prevent page-wide horizontal scrolling */
+body, .document {
+    overflow-x: hidden;
+}
+
+body, .main-content, .container, .document {
+    max-width: 100%;
+}
+
+body, .document {
+    overflow-x: hidden;
+}
+
+/* Sidebar Navigation Styles */
+.sidebar {
+    width: 280px;
+    background-color: #f9fafb;
+    border-right: 1px solid #e5e7eb;
+    padding: 24px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    left: 0;
+    top: 0;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav li {
+    margin: 4px 0;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 10px 12px;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-size: 14px;
+    line-height: 1.45; /* Improve multi-line readability */
+    white-space: normal; /* Allow wrapping for long labels */
+    overflow-wrap: break-word; /* Prevent overflow */
+}
+
+.sidebar nav a:hover {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+.sidebar nav a.active {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* Mobile Header and Hamburger Menu */
+.mobile-header {
+    display: none;
+    background: #f9fafb;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    align-items: center;
+    gap: 15px;
+}
+
+.mobile-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 18px;
+    padding: 0;
+}
+
+.hamburger-btn span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: #374151;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 280px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.layout-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    position: relative;
+}
+
+.document {
+    flex: 1;
+    min-width: 0; /* Fix for flexbox overflow */
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 32px 0;
+    line-height: 1.2;
+}
+
+/* Create unified header when h1 follows document-metadata */
+.document-metadata + h1 {
+    margin-top: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #e2e8f0;
+    position: relative;
+}
+
+/* Add a subtle accent line */
+.document-metadata + h1::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    border-radius: 1px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
+    margin: 32px 0 16px 0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+h2:hover {
+    color: #2563eb;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 24px 0 12px 0;
+}
+
+p {
+    margin-bottom: 16px;
+    color: #374151;
+    hyphens: auto;
+}
+
+.document p {
+    text-align: justify;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* Professional Typography Hierarchy */
+.summary {
+    line-height: 1.2;
+    font-size: 18px;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+.section-intro {
+    font-size: 17px;
+    color: #111827;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* Executive Callout Boxes */
+.executive-callout {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 4px solid #0ea5e9;
+    padding: 20px;
+    margin: 24px 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.executive-callout h4 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0c4a6e;
+}
+
+.executive-callout p {
+    margin-bottom: 0;
+    color: #0c4a6e;
+    text-align: left;
+}
+
+/* Financial Metrics */
+.financial-metric {
+    background: #f8fafc;
+    padding: 20px;
+    margin: 24px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.financial-metric h4 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Key Insights */
+.key-insight {
+    font-style: italic;
+    border-left: 3px solid #10b981;
+    padding-left: 16px;
+    margin: 20px 0;
+    color: #065f46;
+    background: #f0fdf4;
+    padding: 16px 16px 16px 20px;
+    border-radius: 0 6px 6px 0;
+}
+
+/* Document Metadata */
+.document-metadata {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    min-height: 60px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.document-metadata div:first-child {
+    font-weight: 500;
+    color: #475569;
+    flex: 1;
+    min-width: 200px;
+}
+
+.document-metadata div.document-version {
+    font-weight: 600;
+    color: #0f172a;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.document-version {
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    background: #ffffff;
+    color: #0f172a;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.greeting {
+    font-size: 18px;
+    margin-bottom: 24px;
+    color: #111827;
+}
+
+.section {
+    margin: 24px 0;
+}
+
+.highlight {
+    background-color: #f3f4f6;
+    padding: 16px;
+    border-radius: 6px;
+    border-left: 3px solid #2563eb;
+    margin: 16px 0;
+}
+
+.highlight > p {
+    margin-bottom: 0; /* Ensures consistent spacing is handled by the parent */
+}
+
+
+.location {
+    font-weight: 600;
+    color: #1e40af;
+}
+
+.button {
+    display: inline-block;
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: 8px 8px 8px 0;
+}
+
+.button:hover {
+    background-color: #1e40af;
+}
+
+.button-secondary {
+    background-color: #ffffff;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.button-secondary:hover {
+    background-color: #f9fafb;
+    color: #374151;
+}
+
+.footer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.footer p {
+    text-align: center;
+}
+
+/* Enhanced Table of Contents with Hierarchical Navigation */
+.table-of-contents {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 32px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px 24px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    z-index: 10;
+}
+
+/* Custom scrollbar for table of contents */
+.table-of-contents::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-of-contents::-webkit-scrollbar-track {
+    background: rgba(229, 231, 235, 0.3);
+    border-radius: 3px;
+}
+
+.table-of-contents::-webkit-scrollbar-thumb {
+    background: rgba(107, 114, 128, 0.5);
+    border-radius: 3px;
+}
+
+.table-of-contents::-webkit-scrollbar-thumb:hover {
+    background: rgba(107, 114, 128, 0.7);
+}
+
+.table-of-contents h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.dropdown-arrow {
+    transition: transform 0.2s;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+/* Main TOC List */
+.table-of-contents > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.table-of-contents > ul.open {
+    max-height: calc(100vh - 200px); /* Expand to nearly full viewport height minus header/padding */
+    margin-top: 16px;
+}
+
+/* Main TOC Items (h2 sections) */
+.table-of-contents > ul > li {
+    margin: 0;
+    position: relative;
+}
+
+.table-of-contents > ul > li > a {
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 16px;
+    margin: 6px 0; /* More vertical breathing room for long titles */
+    display: block;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    position: relative;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.5; /* Improve multi-line anchor spacing */
+    text-align: left; /* Add this line */
+}
+
+.table-of-contents > ul > li > a:hover {
+    color: #2563eb;
+    background-color: #e5e7eb;
+}
+
+/* Active main section */
+.table-of-contents > ul > li > a.active {
+    background-color: #2563eb;
+    color: white;
+    font-weight: 600;
+}
+
+.reference-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dotted #2563eb;
+    transition: all 0.2s;
+}
+
+.reference-link:hover {
+    color: #1e40af;
+    border-bottom: 1px solid #1e40af;
+    background-color: #eff6ff;
+    padding: 1px 2px;
+    border-radius: 2px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+ul {
+    margin: 16px 0;
+    padding-left: 24px;
+}
+
+li {
+    margin: 8px 0;
+    color: #374151;
+    text-align: justify;
+    line-height: 1.6; /* Consistent line height */
+}
+
+/* Professional List Formatting */
+.feature-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-list li {
+    padding-left: 24px;
+    position: relative;
+    margin: 12px 0;
+}
+
+.feature-list li::before {
+    content: "•";
+    color: #2563eb;
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.numbered-process {
+    counter-reset: step-counter;
+    list-style: none;
+    padding-left: 0;
+}
+
+.numbered-process li {
+    counter-increment: step-counter;
+    padding-left: 36px;
+    position: relative;
+    margin: 16px 0;
+    list-style: none;
+}
+
+.numbered-process li::before {
+    content: counter(step-counter);
+    background: #2563eb;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Professional Tables */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+}
+
+.comparison-table th {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.comparison-table td {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    vertical-align: top;
+}
+
+.comparison-table tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+.comparison-table .metric-cell {
+    text-align: right;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-weight: 500;
+}
+
+strong {
+    color: #111827;
+    font-weight: 600;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.tech-tag {
+    background-color: #eff6ff;
+    color: #1e40af;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Citation and Reference Styles */
+.citation {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 10px;
+    vertical-align: super;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 1px;
+    padding: 1px 2px;
+    border-radius: 2px;
+}
+
+.citation:hover {
+    color: #1e40af;
+    background-color: #eff6ff;
+}
+
+.page-references {
+    margin-top: 48px;
+    padding: 32px;
+    background-color: #f9fafb;
+    border-top: 2px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.page-references h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+.references-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.reference-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.reference-item:target {
+    background-color: #eff6ff;
+    border-left: 3px solid #2563eb;
+}
+
+.ref-number {
+    font-weight: 600;
+    color: #374151;
+    min-width: 28px;
+}
+
+.ref-content {
+    color: #6b7280;
+    flex: 1;
+}
+
+.back-link {
+    color: #6b7280;
+    text-decoration: none;
+    float: right;
+    font-size: 10px;
+    opacity: 0.6;
+    margin-left: 8px;
+}
+
+.back-link:hover {
+    opacity: 1;
+    color: #2563eb;
+}
+
+.page-references a[href^="http"] {
+    color: #2563eb;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.page-references a[href^="http"]:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1023px) {
+    .layout-wrapper {
+        flex-direction: column;
+    }
+
+    .table-of-contents {
+        position: static;
+        width: 100%;
+        margin-bottom: 24px;
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
+/* Responsive Design for Sidebar */
+@media (max-width: 768px) {
+    .mobile-header {
+        display: flex;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding-top: 70px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        padding-top: 80px;
+    }
+    
+    /* Mobile-specific table of contents active state */
+    .table-of-contents > ul > li > a.active {
+        background-color: #2563eb;
+        color: white;
+        font-weight: 600;
+        transform: none; /* Remove translateX on mobile */
+        box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
+    }
+    
+    .table-of-contents {
+        max-width: calc(100vw - 40px); /* Prevent horizontal overflow on mobile */
+    }
+    
+    /* Mobile responsive headers */
+    .document-metadata {
+        margin: 10px 0 16px 0;
+        padding: 16px 16px;
+        font-size: 13px;
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 70px;
+        gap: 8px;
+    }
+    
+    .document-metadata div:first-child {
+        min-width: unset;
+        order: 1;
+    }
+    
+    .document-metadata div.document-version {
+        order: 2;
+        white-space: normal;
+        text-align: right;
+        font-size: 12px;
+    }
+    
+    .document-metadata + h1 {
+        font-size: 24px;
+        margin-top: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .document-metadata + h1::after {
+        height: 2px;
+        margin-top: 12px;
+    }
+    
+    .table-of-contents > ul > li > a {
+        font-size: 13px; /* Slightly smaller on mobile for better fit */
+        padding: 8px 10px; /* Slightly more vertical padding */
+        line-height: 1.5; /* Improve multi-line wrapping */
+        margin: 6px 0; /* Match desktop spacing */
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+    
+    .toc-subsections a {
+        font-size: 11px;
+        padding: 6px 12px 6px 28px;
+        line-height: 1.45;
+        margin: 3px 0;
+    }
+    
+    .toc-subsections a::before {
+        left: 16px;
+    }
+    
+    .toc-subsections a:hover {
+        padding-left: 30px;
+    }
+    
+    .toc-subsections a.active {
+        padding-left: 26px;
+    }
+    
+    .container-inner {
+        padding: 20px;
+    }
+    
+    /* Mobile table overflow prevention */
+    table {
+        font-size: 12px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+    
+    /* Mobile economic content wrapping */
+    .highlight {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+}
+
+/* Tablet and medium screen adjustments */
+@media (min-width: 769px) and (max-width: 1023px) {
+}
+
+/* Desktop Sticky TOC Enhancements */
+@media (min-width: 1024px) {
+    .document {
+        order: 1; /* Document on the left */
+    }
+
+    .table-of-contents {
+        order: 2; /* TOC on the right */
+        width: 300px; /* Slightly wider for subsections */
+        top: 32px; /* Larger distance from top on desktop */
+        max-height: calc(100vh - 64px); /* Prevent overflow of viewport */
+    }
+    
+    /* Custom scrollbar for better aesthetics */
+    .table-of-contents::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    .table-of-contents::-webkit-scrollbar-track {
+        background: #f1f5f9;
+        border-radius: 3px;
+    }
+    
+    .table-of-contents::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 3px;
+    }
+    
+    .table-of-contents::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+    
+    /* Always show TOC content on desktop */
+    .table-of-contents > ul {
+        max-height: none;
+        overflow: visible;
+        margin-top: 16px;
+    }
+    
+    .table-of-contents h3 {
+        cursor: default;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .dropdown-arrow {
+        display: none;
+    }
+}
+
+/* Extra small screens (very narrow phones) */
+@media (max-width: 480px) {
+    .document-metadata {
+        padding: 12px 12px;
+        font-size: 12px;
+        margin: 8px 0 12px 0;
+        min-height: 65px;
+    }
+    
+    .document-metadata div:first-child {
+        line-height: 1.4;
+    }
+    
+    .document-metadata div.document-version {
+        font-size: 11px;
+        margin-top: 4px;
+    }
+    
+    .document-metadata + h1 {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+    
+    .main-content {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+/* Ultra narrow screens (very small phones) */
+@media (max-width: 360px) {
+    .document-metadata {
+        padding: 10px 10px;
+        font-size: 11px;
+        min-height: 60px;
+    }
+    
+    .document-metadata div.document-version {
+        font-size: 10px;
+    }
+    
+    .document-metadata + h1 {
+        font-size: 20px;
+    }
+    
+    .main-content {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}

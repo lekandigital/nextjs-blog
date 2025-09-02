@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grant Thesis Implementation - Document Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- KaTeX Configuration -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="currency-normalize.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ]
+            });
+            // Normalize currency after KaTeX renders to avoid touching math
+            if (window.normalizeCurrencyAndMetrics) window.normalizeCurrencyAndMetrics();
+        });
+    </script>
+    <style>
+        :root {
+            --toc-max-height: 200px; /* Custom max-height for this page's table of contents */
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header with Hamburger -->
+    <div class="mobile-header">
+        <button class="hamburger-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1 class="mobile-title">MicroISP</h1>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <h2>MicroISP</h2>
+        <nav>
+            <ul>
+                <li><a href="overview.html" class="nav-link">Overview</a></li>
+                <li><a href="thesis_implementation.html" class="nav-link">Grant Thesis</a></li>
+                <li><a href="qa_operations.html" class="nav-link">Operations Q&A</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div class="container">
+            <div class="layout-wrapper">
+                         <div class="table-of-contents">
+                <h3 onclick="toggleDropdown()">Contents <span class="dropdown-arrow" id="arrow">▼</span></h3>
+                <ul id="dropdown-content">
+                    <li><a href="#grant-funding">Grant Thesis</a></li>
+                    <li><a href="#outcome">Outcome</a></li>
+                    <li><a href="#why-now">Why Now</a></li>
+                    <li><a href="#risk-mitigation">Risk Mitigation</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                    <li><a href="#measurable-success">Measurable Success</a></li>
+                </ul>
+            </div>
+
+            <div class="document">
+                <div class="document-metadata">
+                    <div>
+                        <strong>Document:</strong> Grant Thesis<br>
+                        <strong>Created:</strong> August 31, 2025
+                    </div>
+                    <div class="document-version">Draft v0.2 - Working Document</div>
+                </div>                <h1>Grant Thesis and Implementation Strategy</h1>
+
+                <div class="section" id="grant-funding">
+                    <h2 onclick="window.location.href='#grant-funding'">Grant Thesis</h2>
+                    
+                    <div class="executive-callout">
+                        <h4>Funding Request: \$6,000</h4>
+                        <p>Establish proof-of-concept MicroISP deployment serving <strong>60-75 households</strong> in American Samoa, where 62.4% of the population lacks reliable internet access<a href="#ref-15" class="citation">[15]</a>.</p>
+                    </div>
+                    
+                    <p class="section-intro">This strategic funding allocation \$1,500 per production node (including installation) and \$1,500 for development infrastructure—represents the minimum viable investment to validate a scalable model that reduces connectivity costs by 30-40% while generating sustainable revenue streams.</p>
+
+                    <h3>Investment Allocation</h3>
+                    
+                    <div class="financial-metric">
+                        <h4>Production Infrastructure: \$4,500</h4>
+                        <p><strong>3 nodes @ \$1,500 each</strong></p>
+                        <p>$$\text{Deployment Cost} = 3 \times \text{\$1,500} = \text{\$4,500}$$</p>
+                        <p>$$\text{Households Served} = 3 \times (20 \text{--} 25) = 60 \text{--} 75 \text{ households}$$</p>
+                        <p>$$\text{Cost per Household} = \frac{\text{\$6,000}}{75 \text{ households}} = \text{\$80\text{; }} \frac{\text{\$6,000}}{60 \text{ households}} = \text{\$100}$$</p>
+                        <p><strong>Total project cost per household: \$80-100 (at full 60-75 household enrollment)</strong></p>
+                        <p><em>Initial cost during ramp-up: \$133-200 per household (30-45 households months 1-3). Cost per household decreases as enrollment grows to target levels.</em></p>
+                    </div>
+                    
+                    <div class="key-insight">
+                        <h4>Revenue Generation Potential</h4>
+                        <p>Each node transforms individual <span class="metrics">\$65–\$120/month</span> Starlink costs (promotional rates start at <span class="metrics">\$65</span>) into <span class="metrics">\$50–\$80/month</span> shared access:</p>
+                        <p>$$\text{Monthly Revenue} = 3 \times \left[(20 \text{--} 25) \times (\text{\$50} \text{--} \text{\$80})\right] = \text{\$3,000} \text{--} \text{\$6,000}$$</p>
+                        <p>$$\text{Annual Revenue Potential} = \text{\$36,000} \text{--} \text{\$72,000}$$</p>
+                        <p><strong>ROI: 240-840% annually (based on net cash flow after operating costs)</strong></p>
+                        <p>$$\text{ROI} = \frac{\text{Net Cash Flow}}{\text{Investment}} = \frac{\text{\$14,400} \text{--} \text{\$50,400}}{\text{\$6,000}} = 240\% \text{--} 840\%$$</p>
+                    </div>
+                    
+                    <div class="comparison-table">
+                        <h4>Development Infrastructure: \$1,500</h4>
+                        <table>
+                            <tr>
+                                <th>Component</th>
+                                <th>Purpose</th>
+                                <th>Business Value</th>
+                            </tr>
+                            <tr>
+                                <td>Dedicated Testbed</td>
+                                <td>Hardware optimization & testing</td>
+                                <td>Prevent service disruption during upgrades</td>
+                            </tr>
+                            <tr>
+                                <td>QoS Laboratory</td>
+                                <td>Traffic management algorithms</td>
+                                <td>Maximize performance per dollar</td>
+                            </tr>
+                            <tr>
+                                <td>Training Platform</td>
+                                <td>Local technician education</td>
+                                <td>Reduce ongoing maintenance costs by 60%</td>
+                            </tr>
+                            <tr>
+                                <td>Backup System</td>
+                                <td>Service continuity during maintenance</td>
+                                <td>Maintain 99%+ uptime targets</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="executive-callout">
+                        <h4>Total Grant Request: \$6,000</h4>
+                        <p>Strategic deployment allocation across production nodes and development infrastructure:</p>
+                        
+                        <ul class="feature-list">
+                            <li><strong>3 Production Nodes:</strong> \$1,500 each (includes professional installation) = \$4,500</li>
+                            <li><strong>Development Infrastructure:</strong> Testing, optimization, and scaling preparation = \$1,500</li>
+                        </ul>
+                        
+                        <div class="financial-metric">
+                            <strong>Professional Installation Included:</strong><br>
+                            Site survey & optimal placement<br>
+                            Cyclone-resistant weatherproofing<br>
+                            Solar optimization & community training<br>
+                            <strong>Total investment per household: \$80-100</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="outcome">
+                    <h2 onclick="window.location.href='#outcome'">Outcome</h2>
+                    
+                    <div class="key-insight">
+                        <h4>Immediate Impact (Months 1-6)</h4>
+                        <ul class="feature-list">
+                            <li><strong>Connectivity:</strong> Connect 60-75 households currently priced out of digital economy</li>
+                            <li><strong>Revenue Generation:</strong> \$3,000-6,000 monthly revenue at 80% utilization</li>
+                            <li><strong>Job Creation:</strong> 3-5 local employment opportunities in network operations</li>
+                            <li><strong>Policy Impact:</strong> Establish proof points for federal BEAD funding eligibility</li>
+                        </ul>
+                        
+                        <div class="financial-metric">
+                            <strong>6-Month Financial Projection (with ramp-up):</strong><br>
+                            $$\text{Months 1-3: 50\% utilization} = 3 \times (\text{\$1,500}\text{--}\text{\$3,000}) = \text{\$4,500}\text{--}\text{\$9,000}$$
+                            $$\text{Months 4-6: 80\% utilization} = 3 \times (\text{\$2,400}\text{--}\text{\$4,800}) = \text{\$7,200}\text{--}\text{\$14,400}$$
+                            $$\text{Total 6-Month Revenue} = (\text{\$4,500}\text{--}\text{\$9,000}) + (\text{\$7,200}\text{--}\text{\$14,400}) = \text{\$11,700}\text{--}\text{\$23,400}$$
+                            $$\text{Operating Margin} = (40\text{--}70)\% = \text{\$4,680}\text{--}\text{\$16,380}$$
+                            <p><em>6-month operating margin: \$4,680–\$16,380 (after \$10,800 OpEx). Accounts for 65% average utilization during ramp-up period</em></p>
+                        </div>
+                    </div>
+                    
+                    <div class="executive-callout">
+                        <h4>Sustained Value Creation (Months 6-12)</h4>
+                        <ul class="numbered-process">
+                            <li><strong>Capital Recovery:</strong> Achieve full payback on initial \$6,000 investment</li>
+                            <li><strong>Cash Flow Generation:</strong> \$14,400-50,400 annual net cash flow for reinvestment</li>
+                            <li><strong>Economic Impact:</strong> Document 10-15% household income increases through digital opportunities</li>
+                            <li><strong>Scalability Validation:</strong> Build replicable model for 4,788 underserved households in American Samoa</li>
+                        </ul>
+                        
+                        <div class="financial-metric">
+                            <strong>Annual Economics:</strong><br>
+                            Revenue: \$36,000-72,000<br>
+                            Operating Costs: \$21,600<br>
+                            <strong>Net Cash Flow: \$14,400-50,400</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-table">
+                        <h4>Scalability Demonstration with Competitive Context (Year 2+)</h4>
+                        <table>
+                            <tr>
+                                <th>Market</th>
+                                <th>Addressable Population</th>
+                                <th>Revenue Potential</th>
+                            </tr>
+                            <tr>
+                                <td>American Samoa (Full)</td>
+                                <td>4,788 households</td>
+                                <td>$2.87M - $4.61M annually</td>
+                            </tr>
+                            <tr>
+                                <td>Appalachian Rural</td>
+                                <td>500,000 households</td>
+                                <td>$90M - $240M realistic market potential (30-50% of $300M - $480M TAM)</td>
+                            </tr>
+                            <tr>
+                                <td>Native American Reservations</td>
+                                <td>200,000 households</td>
+                                <td>$36M - $96M realistic market potential (30-50% of $120M - $192M TAM)</td>
+                            </tr>
+                            <tr>
+                                <td>Puerto Rico Rural</td>
+                                <td>150,000 households</td>
+                                <td>$27M - $72M realistic market potential (30-50% of $90M - $144M TAM)</td>
+                            </tr>
+                        </table>
+                        <p><em>Total Addressable Market (assumes 30-50% realistic capture): $156M - $413M annually across identified regions</em></p>
+                        <p><em>Breakdown: American Samoa $2.87M - $4.61M + Appalachia $90M - $240M + Reservations $36M - $96M + Puerto Rico $27M - $72M</em></p>
+                        <p><strong>Market potential assumes steady-state operations; actual net revenue lower due to ramp-up period and operating costs.</strong> Net opportunity: $92M - $286M (60-70% margin after OpEx). Full capture assumes 2-3 year scaling timeline.</p>
+                    </div>
+                    
+                    <div class="executive-callout">
+                        <h4>Competitive Positioning and Market Capture Assumptions</h4>
+                        <p><strong>Against ASTCA (80% market share):</strong> Unbundled pricing ($50-80 vs $149-169 bundled) targets underserved households priced out of current offerings.</p>
+                        <p><strong>Against Bluesky/Starlink (19%/1% shares):</strong> Shared cost model eliminates $175-349 equipment barriers, addresses cyclone downtime (10-15%) through backup systems.</p>
+                        <p><strong>Market Penetration Strategy:</strong> Survey-based deployment prioritizing high-utilization areas, local champion programs ($20/signup commission), customer acquisition cost ~$75 with $1,200+ lifetime value (16:1 ratio).</p>
+                        <p><strong>Infrastructure Advantage:</strong> Hawaiki cable capacity (200 Gb/s) provides upstream bandwidth, while shared nodes reduce per-household deployment costs by 30-40% vs individual installations.</p>
+                    </div>
+                </div>
+
+                <div class="section" id="why-now">
+                    <h2 onclick="window.location.href='#why-now'">Why Now</h2>
+                    
+                    <p>Current competitive landscape creates narrow deployment window. ASTCA dominates with ~80% market share at $149-169/month bundled rates<a href="#ref-25" class="citation">[25]</a>. Bluesky's ~19% share through Starlink reseller pricing at $65-120/month + $175-349 equipment creates affordability barriers for 60-70% of households (median income $28,532)<a href="#ref-17" class="citation">[17]</a>. Starlink direct has only 1% market share due to cost barriers. This gap between incumbent pricing and household affordability creates our market entry opportunity before prices potentially adjust.</p>
+                    
+                    <p><strong>Federal Funding Alignment with Disbursement Gaps</strong><br>
+                    BEAD allocated $37 million to American Samoa but only 30-40% disbursed as of mid-2025<a href="#ref-18" class="citation">[18]</a>. FCC mandates 100/20 Mbps speeds for territories but implementation delayed. Average service costs remain $55-130/month with limited $30/month ACP subsidies<a href="#ref-52" class="citation">[52]</a>. Successful pilot data positions us as implementation partner for remaining 60-70% of federal funds, multiplying initial grant 50-100x through demonstrated community deployment capability.</p>
+                    
+                    <p><strong>Infrastructure Development Context</strong><br>
+                    Recent Hawaiki undersea cable (2018) provides 200 Gb/s capacity but last-mile connectivity gaps persist<a href="#ref-53" class="citation">[53]</a>. ASTCA's underground fiber with O3b Networks uplinks (1.2 Gbit/s) serves main corridors but rural areas remain underserved. Professional installation requirements include cyclone-resistant weatherproofing and IP67-rated access points, creating deployment complexity that deters traditional providers.</p>
+                    
+                    <p><strong>Community Trust and Competitive Moats</strong><br>
+                    Early deployment establishes trusted local provider status before mainland competitors enter market. Island communities' relationship-driven business culture creates sustainable competitive advantages. Internet Society rates American Samoa's consumer choice as "Very Poor"<a href="#ref-54" class="citation">[54]</a>, indicating limited competition and first-mover advantages for community-focused models.</p>
+                </div>
+
+                <div class="section" id="risk-mitigation">
+                    <h2 onclick="window.location.href='#risk-mitigation'">Risk Mitigation Through Smart Design</h2>
+                    
+                    <p><strong>Technical Resilience</strong></p>
+                    <ul>
+                        <li>Development node enables zero-downtime updates</li>
+                        <li>Solar backup maintains service during grid failures</li>
+                        <li>Professional installation ensures cyclone survivability</li>
+                    </ul>
+                    
+                    <p><strong>Financial Protection</strong></p>
+                    <ul>
+                        <li>Shared infrastructure model reduces per-household risk</li>
+                        <li>Multiple revenue streams (subscriptions + data partnerships)</li>
+                        <li>5-10 month payback limits capital exposure</li>
+                    </ul>
+                    
+                    <p><strong>Community Acceptance</strong></p>
+                    <ul>
+                        <li>Local technician training creates stakeholder buy-in</li>
+                        <li>Transparent pricing builds trust</li>
+                        <li>Professional installation demonstrates long-term commitment</li>
+                    </ul>
+                </div>
+
+                <div class="section" id="conclusion">
+                    <h2 onclick="window.location.href='#conclusion'">Conclusion</h2>
+                    
+                    <p>This $6,000 grant isn't just funding infrastructure—it's seeding an economic transformation model for the 28,729 people in American Samoa without reliable internet access<a href="#ref-13" class="citation">[13]</a>. The careful allocation across production nodes and development capabilities creates a robust foundation for sustainable growth.</p>
+                    
+                    <div class="financial-metric">
+                        <h4>Comprehensive Financial Modeling and Revenue Streams</h4>
+                        <p><strong>Three-Stream Revenue Structure:</strong></p>
+                        <ul class="feature-list">
+                            <li><strong>Primary (70%):</strong> Subscription revenue - predictable recurring monthly payments from 60-75 households</li>
+                            <li><strong>Secondary (20%):</strong> Data partnerships - estimated $5-10k per anonymized dataset based on specialized training data market rates</li>
+                            <li><strong>Tertiary (10%):</strong> Platform transaction fees from integrated e-commerce and digital services</li>
+                        </ul>
+                        <p><strong>Risk-Adjusted Financial Projections:</strong> Accounts for ramp-up periods, cyclone disruption risk (10-15%), and market penetration challenges. 5-year IRR: 40-50% with enterprise value potential $200-300M at 10-12x EBITDA multiple.</p>
+                    </div>
+                    
+                    <div class="executive-callout">
+                        <h4>Competitive Market Analysis Integration</h4>
+                        <p>Positioned against Internet Society "Very Poor" consumer choice rating<a href="#ref-54" class="citation">[54]</a>, our model addresses market gaps:</p>
+                        <ul class="numbered-process">
+                            <li><strong>vs ASTCA (80% share):</strong> Unbundled pricing breaks $149-169/month bundled barrier</li>
+                            <li><strong>vs Bluesky/Starlink (19%/1%):</strong> Shared infrastructure eliminates $175-349 equipment costs</li>
+                            <li><strong>vs National Satellites:</strong> Lower latency (LEO vs GEO) improves real-time application performance</li>
+                            <li><strong>Market Differentiation:</strong> Community ownership, data sovereignty, 99%+ uptime targets with storm resilience</li>
+                        </ul>
+                    </div>
+                    
+                    <p>With proven unit economics, comprehensive competitive analysis, and perfect timing relative to federal funding opportunities ($37M BEAD allocation with only 30-40% disbursed), this pilot program represents exceptional value creation potential from a modest initial grant. The narrow window between incumbent pricing and household affordability creates our market entry opportunity before competitive dynamics potentially shift.</p>
+                    
+                    <p>The development node particularly demonstrates forward thinking—ensuring we can innovate and optimize without service disruptions, while the professional installation cost protects long-term reliability and community trust. Together, these components create a replicable blueprint for addressing the digital divide across underserved American communities<a href="#ref-60" class="citation">[60]</a>.</p>
+                </div>
+
+                <div class="section" id="measurable-success">
+                    <h2 onclick="window.location.href='#measurable-success'">Measurable Success Metrics</h2>
+                    
+                    <p><strong>Quarter 1:</strong> Deploy all nodes, connect first 30 households, achieve 50% utilization (ramp-up period)</p>
+                    <p><strong>Quarter 2:</strong> Reach 60 households, 80% target utilization, <span class="metrics">\$3,000+</span> monthly revenue</p>
+                    <p><strong>Quarter 3:</strong> Full payback achieved (5-10 months total), 90% customer satisfaction, 3 local jobs created</p>
+                    <p><strong>Quarter 4:</strong> Cash flow positive, expansion plan validated, federal funding applications submitted</p>
+                </div>
+
+                <div style="margin-top: 24px; text-align: center;"> <a href="mailto:lekanadeyeri@gmail.com" class="button">Email Me</a> <a href="https://x.com/messages/compose?recipient_id=855956089828933632" class="button button-secondary" target="_blank">Message on X</a> <a href="https://linkedin.com/in/lekanadeyeri" class="button button-secondary" target="_blank">LinkedIn</a> <a href="https://hy.ms" class="button button-secondary" target="_blank">Blog</a> </div>
+
+                <div class="page-references">
+                    <h3>References</h3>
+                    <div class="references-list">
+                        <div class="reference-item" id="ref-4">
+                            <span class="ref-number">[4]</span>
+                            <div class="ref-content"><a href="#cite-4" class="back-link" title="Back to citation">↑</a> "Understanding the Business Investment Payback Period," [Online]. Available: https://preferredcfo.com/insights/determining-payback-period-of-business-investment. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-14">
+                            <span class="ref-number">[14]</span>
+                            <div class="ref-content"><a href="#cite-14" class="back-link" title="Back to citation">↑</a> "Deepening the digital divide: Pew says cities will gain as rural towns lose," [Online]. Available: https://wirelessestimator.com/articles/2025/deepening-the-digital-divide-pew-says-cities-will-gain-as-rural-towns-lose-in-broken-broadband-rollout/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-18">
+                            <span class="ref-number">[18]</span>
+                            <div class="ref-content"><a href="#cite-18" class="back-link" title="Back to citation">↑</a> "American Samoa | Spending Profile - USAspending," [Online]. Available: https://www.usaspending.gov/state/american-samoa/2025. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-45">
+                            <span class="ref-number">[45]</span>
+                            <div class="ref-content"><a href="#cite-45" class="back-link" title="Back to citation">↑</a> "Rural Digital Opportunity Fund - FCC," [Online]. Available: https://www.fcc.gov/auction/904. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-46">
+                            <span class="ref-number">[46]</span>
+                            <div class="ref-content"><a href="#cite-46" class="back-link" title="Back to citation">↑</a> "Shovel-Ready: What It Means for Construction and Infrastructure Projects," [Online]. Available: https://www.constructconnect.com/blog/shovel-ready-what-it-means-for-construction-and-infrastructure-projects. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-47">
+                            <span class="ref-number">[47]</span>
+                            <div class="ref-content"><a href="#cite-47" class="back-link" title="Back to citation">↑</a> "Blended Finance - OECD," [Online]. Available: https://www.oecd.org/dac/financing-sustainable-development/blended-finance-principles/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-48">
+                            <span class="ref-number">[48]</span>
+                            <div class="ref-content"><a href="#cite-48" class="back-link" title="Back to citation">↑</a> "Ubiquiti Inc.," [Online]. Available: https://www.ui.com/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-49">
+                            <span class="ref-number">[49]</span>
+                            <div class="ref-content"><a href="#cite-49" class="back-link" title="Back to citation">↑</a> "How Does Internet Access Affect Economic Development? - Public Service Commission of Wisconsin," [Online]. Available: https://psc.wi.gov/Documents/broadband/Economic%20Development%20and%20Broadband.pdf. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-50">
+                            <span class="ref-number">[50]</span>
+                            <div class="ref-content"><a href="#cite-50" class="back-link" title="Back to citation">↑</a> "Telehealth: The Advantages and Disadvantages - Healthline," [Online]. Available: https://www.healthline.com/health/telehealth-pros-and-cons. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-51">
+                            <span class="ref-number">[51]</span>
+                            <div class="ref-content"><a href="#cite-51" class="back-link" title="Back to citation">↑</a> "The Importance of Accountability in Project Management," [Online]. Available: https://www.wrike.com/blog/importance-of-accountability-in-project-management/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-60">
+                            <span class="ref-number">[60]</span>
+                            <div class="ref-content"><a href="#cite-60" class="back-link" title="Back to citation">↑</a> "Case Study: A Community-Owned Internet Network in a Remote Area," The Journal of Community Informatics. [Online]. Available: http://ci-journal.net/index.php/ciej/article/view/1037. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <p>Looking forward to exploring these opportunities together.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

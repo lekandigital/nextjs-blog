@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroISP Overview - Document Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="currency-normalize.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ]
+            });
+            if (window.normalizeCurrencyAndMetrics) window.normalizeCurrencyAndMetrics();
+        });
+    </script>
+    <style>
+        :root {
+            --toc-max-height: 300px; /* Custom max-height for this page's table of contents */
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header with Hamburger -->
+    <div class="mobile-header">
+        <button class="hamburger-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1 class="mobile-title">MicroISP</h1>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <h2>MicroISP</h2>
+        <nav>
+            <ul>
+                <li><a href="overview.html" class="nav-link">Overview</a></li>
+                <li><a href="thesis_implementation.html" class="nav-link">Grant Thesis</a></li>
+                <li><a href="qa_operations.html" class="nav-link">Operations Q&A</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div class="container">
+            <div class="layout-wrapper">
+             <div class="table-of-contents">
+                <h3 onclick="toggleDropdown()">Contents <span class="dropdown-arrow" id="arrow">▼</span></h3>
+                <ul id="dropdown-content">
+                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#self-intro">My Background</a></li>
+                    <li><a href="#the-idea">The Idea</a></li>
+                    <li><a href="#geographic-focus">Geographic Focus</a></li>
+                    <li><a href="#the-three-business-strategy">The Three Parts</a></li>
+                    <li><a href="#long-term-vision">Long-Term Vision</a></li>
+                    <li><a href="#beyond-connectivity">Beyond Connectivity: Unlocking Human Potential</a></li>
+                    <li><a href="#market-opportunity">Market Opportunity & Business Model</a></li>
+                    <li><a href="#technical-architecture">Technical Architecture and Implementation</a></li>
+                    <li><a href="#data-collection-opportunity">The Data Collection Opportunity</a></li>
+                    <li><a href="#implementation-roadmap">The Implementation Roadmap</a></li>
+                </ul>
+            </div>            <div class="document">
+                <div class="document-metadata">
+                    <div>
+                        <strong>Document:</strong> MicroISP Overview<br>
+                        <strong>Created:</strong> August 31, 2025
+                    </div>
+                    <div class="document-version">Draft v0.2 - Working Document</div>
+                </div>                <h1>MicroISP: Future of Connectivity Infrastructure</h1>
+
+                <div class="section" id="summary">
+                    <h2>Summary</h2>
+                    
+                    <div class="executive-callout">
+                        <h4>Infrastructure Meets Intelligence</h4>
+                        <p>MicroISP subsidizes prohibitive satellite internet startup costs in unserved areas where broadband infrastructure is economically unfeasible, reducing costs to <span class="metrics">$50–$80/month</span>. Customers can opt into nearly free connectivity through voluntary behavioral demonstration recordings, capturing themselves performing daily tasks to train Physics-Informed Neural Networks (PINNs)<a href="#ref-1" class="citation">[1]</a>. This scalable platform bridges the <span class="metrics">$80B</span> rural connectivity gap<a href="#ref-2" class="citation">[2]</a> while generating proprietary datasets worth 10x+ the infrastructure investment<a href="#ref-3" class="citation">[3]</a>, achieving 240-840% ROI with 5-10 month payback periods<a href="#ref-4" class="citation">[4]</a>. Beyond human behavioral data, standalone sensors collect weather, agricultural, and environmental data for specialized PINNs<a href="#ref-5" class="citation">[5]</a>, creating multiple revenue streams from agtech, climate modeling, and industrial IoT<a href="#ref-6" class="citation">[6]</a>. First-mover advantage transforming connectivity deserts into data goldmines that Fortune 500 companies and AI researchers pay premium rates to access.</p>
+                    </div>
+                </div>
+
+                <div class="section" id="self-intro">
+                    <h2>My Background</h2>
+                    <p>Hi, I'm Lekan, a CS/Physics undergrad currently on leave from Pitzer College. My path started with a scholarship to Phillips Exeter Summer School for computer science, physics, and discrete math in 8th grade, leading to work spanning <a href="https://github.com/lekanadeyeri/Single-File-Library-for-Python-Alexa-Skills" class="reference-link" target="_blank">voice-based clinical trial technology</a> at ERT (a startup that was acquired by Clario) during my sophomore year of high school, a <a href="http://microsoft.com/" class="reference-link" target="_blank">software engineering and product management internship at Microsoft</a>, and <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=VxTWNqgAAAAJ&amp;authuser=1&amp;citation_for_view=VxTWNqgAAAAJ:9yKSN-GCB0IC" class="reference-link" target="_blank">published deep learning research at Stanford</a> involving computer vision. I was recognized as a Kleiner Perkins Engineering Fellowship Finalist and participated in <a href="https://twitter.com/BessemerVP/status/1547271355539734528" class="reference-link" target="_blank">various fellowships</a>.</p>
+                    
+                    <p>Three things put me in a good spot here: Technical depth - <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=VxTWNqgAAAAJ&amp;authuser=1&amp;citation_for_view=VxTWNqgAAAAJ:9yKSN-GCB0IC" class="reference-link" target="_blank">published computer vision and deep learning research at Stanford</a>, built distributed systems at <a href="http://microsoft.com/" class="reference-link" target="_blank">Microsoft</a>, created decentralized clinical trial tech that's still running (<a href="https://github.com/lekanadeyeri/Single-File-Library-for-Python-Alexa-Skills" class="reference-link" target="_blank">that Alexa skill for Lupus patients</a> is still helping people years later). Systems thinking - CS/Physics double major means I get both the computational side and the physical constraints. You need both when you're deploying satellite dishes and managing data networks. Proven execution - built technology solutions across diverse environments, from enterprise software to research applications.</p>
+                    
+                    <p>Research experience in <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=VxTWNqgAAAAJ&amp;authuser=1&amp;citation_for_view=VxTWNqgAAAAJ:u5HHmVD_uO8C" class="reference-link" target="_blank">signal processing and data extraction from noisy, sparse datasets</a> directly applies to behavioral data collection through connectivity infrastructure.</p>
+                </div>
+
+                <div class="section" id="the-idea">
+                    <h2>The Idea</h2>
+                    
+                    <h3 id="founder-opportunity">My Take on the Opportunity</h3>
+                    <p>Everyone knows satellite internet's getting cheaper thanks to reusable rockets<a href="#ref-7" class="citation">[7]</a>. But <span class="metrics">\$349</span> hardware (promotional rates as low as <span class="metrics">\$175</span>) plus <span class="metrics">\$65 - \$120/month</span><a href="#ref-8" class="citation">[8]</a> is still impossible for most people. Talked to this artist in a developing country - incredibly talented, could monetize their work online, but the <span class="metrics">\$349</span> Starlink hardware alone was months of income.</p>
+                    
+                    <p>Here's what others miss: internet infrastructure can double as a distributed data collection platform. Tesla just switched Optimus training from expensive motion capture to vision and low-cost setups to scale data collection<a href="#ref-9" class="citation">[9]</a>. We can do this with connectivity. Share infrastructure across 20-25 households, cut costs 30-40%, and users can earn further discounts by doing simple data tasks - recording how they use equipment, timing irrigation, basic stuff that helps train physics-informed neural networks<a href="#ref-10" class="citation">[10]</a>.</p>
+                    
+                    <p>The real insight: we're not just competing on price. We're building infrastructure that systematically captures human behavioral data that researchers can't see but AI systems desperately need.</p>
+                    
+                    <h3 id="founder-excitement">Why the MicroISP Model Excites Me</h3>
+                    <div class="highlight">
+                        <p>The financial structure is compelling with each node requiring minimal upfront capital while generating sustainable revenue (<span class="metrics">\$50–\$80/month</span> or possibly lower vs Starlink's direct <span class="metrics">\$120+/month</span>)<a href="#ref-11" class="citation">[11]</a>. This creates a path to bootstrap community by community, proving unit economics before scaling.</p>
+                    </div>
+                    
+                    <p>More importantly, as satellite ISP costs decrease over time, differentiation will come from value-added services, and systematic data collection for Physics-Informed Neural Networks (PINNs) could provide that edge<a href="#ref-12" class="citation">[12]</a>.</p>
+                    
+                    <p>During a medical leave, I experienced firsthand the challenges of limited connectivity and infrastructure gaps. This experience reshaped my perspective on building technology - emphasizing the importance of sustainable, accessible solutions for underserved communities.</p>
+                </div>
+
+                <div class="section" id="geographic-focus">
+                    <h2>Geographic Focus</h2>
+                    <p>I'm most interested in working within US territories, particularly <span class="location">American Samoa</span> as the primary target. American Samoa offers ideal conditions with severe connectivity gaps, US regulatory framework, and a manageable 46,029 population<a href="#ref-13" class="citation">[13]</a> for piloting.</p>
+                    
+                    <p><strong>Priority Locations:</strong></p>
+                    <ul>
+                        <li><span class="location">American Samoa</span> - Primary target (46,029 population, severe connectivity gaps, US regulatory framework)</li>
+                        <li><span class="location">Appalachian regions</span> - Strong mainland option with massive connectivity gaps and rich data opportunities<a href="#ref-14" class="citation">[14]</a></li>
+                        <li><span class="location">Puerto Rico</span> - Larger scale validation (3.2M people, rural underconnected areas post-hurricane)</li>
+                        <li><span class="location">Southwest Native American reservations</span> - Federal funding availability, severe connectivity gaps</li>
+                    </ul>
+                    
+                    <p>Less ideal due to regulatory complexity, smaller markets, or logistics challenges are other Native American reservations where federal bureaucracy can slow deployment.</p>
+                </div>
+
+                <div class="section" id="the-three-business-strategy">
+                    <h2>The Three Parts</h2>
+                    <p>Here's where the long-term vision gets really compelling. We're not building one business - we're building three interconnected but separate operations:</p>
+                    
+                    <h3 id="core-MicroISP">1. Core MicroISP</h3>
+                    <p>Pure connectivity play focused on reliable service delivery. Early in the service, users can pay directly by providing data such as video recordings of completing physical actions and other tasks. Over time, this transitions to Research Operations to maintain service quality and trust. Clean business model, predictable revenue.</p>
+                    
+                    <h3 id="research-operations">2. Research Operations</h3>
+                    <p>Pure data collection and research partnerships. Things such as sensor data or weather monitoring in remote areas where there's no community makes sense as a research-focused node with free internet plus monetary compensation for installation/maintenance. Environmental monitoring, research collaborations. Eventually, the data-for-access programs migrate here, keeping them separate from the core ISP to preserve trust and performance. This offers access to vast geographic areas and large populations for physical data collection, labeling tasks, and other data operations. Users get paid for participating in data collection tasks, in addition to automated sensor information being transmitted for research purposes.</p>
+                    
+                    <h3 id="economic-platform">3. Economic Enablement Platform</h3>
+                    <p>The services layer that helps users monetize their connectivity - freelancing platforms, e-commerce tools, educational marketplaces. This is also where human capital development lives: workforce development programs, skills training, tutoring and language exchange, all designed to turn connectivity into career opportunities.</p>
+                </div>
+
+                <div class="section" id="long-term-vision">
+                    <h2>Long-Term Vision</h2>
+                    <p>In premium markets, I'm particularly interested in being an ISP built around privacy, resilience, and freedom from censorship - essentially serving as a privacy wrapper around existing satellite providers. The provider's role should be simple: enable connection without surveillance or unnecessary intrusion.</p>
+                    
+                    <p>Satellite internet is inherently more decentralized than cell towers, broadband hubs, or broadcast antennas that can be switched off or disrupted<a href="#ref-59" class="citation">[59]</a>. As long as someone has power and clear line of sight to the satellite, they stay connected.</p>
+                    
+                    <p>As satellite providers commoditize on price, we differentiate on community impact and the economic opportunities we enable. We're not just selling internet - we're selling economic freedom.</p>
+                </div>
+
+                <div class="section" id="beyond-connectivity">
+                    <h2>Beyond Connectivity: Unlocking Human Potential</h2>
+                    <p>The real opportunity isn't just cheaper internet - it's what happens when you connect people who've been priced out of the digital economy<a href="#ref-56" class="citation">[56]</a>:</p>
+                    
+                    <h3 id="economic-opportunities">Broadened Economic Opportunities</h3>
+                    <p>For service providers and businesses, this creates access to previously untapped talent pools:</p>
+                    <ul>
+                        <li>Customer support and virtual assistance leveraging local languages and time zones - companies gain 24/7 coverage with native speakers</li>
+                        <li>Digital freelancing workforce with existing skills in design, writing, and data entry - businesses access cost-effective talent for scaling operations</li>
+                        <li>E-commerce bridges helping local producers reach global markets - retailers and distributors discover unique products and suppliers</li>
+                    </ul>
+                    
+                    <h3 id="education-skills">Education & Skills Development</h3>
+                    <p>Educational institutions and training providers benefit from expanded reach:</p>
+                    <ul>
+                        <li>Tutoring and language exchange programs connecting learners globally - education platforms gain new instructors and diverse perspectives</li>
+                        <li>Skill development programs that turn connectivity into career opportunities - tech companies can train and recruit from wider talent pools</li>
+                    </ul>
+                    
+                    <p>Connectivity unlocks economic value that’s been sitting idle behind access barriers, opening new markets for businesses while giving communities a direct path into the digital economy.</p>
+                    
+                    <p>The beautiful thing is each phase funds the next. We bootstrap community by community, proving the model works before scaling. And unlike traditional ISPs that just move data, we're creating an ecosystem where connectivity enables human potential.</p>
+                    
+                    <p>That's not just a business - that's infrastructure for the next billion people coming online.</p>
+                </div>
+
+                <div class="section" id="market-opportunity">
+                    <h2>Market Opportunity & Business Model</h2>
+                    
+                    <h3 id="samoa-market">American Samoa Market Analysis</h3>
+                    
+                    <div class="financial-metric">
+                        <h4>Market Sizing and Demographics</h4>
+                        <p>As of August 2025, the territory's population is estimated at 46,029 individuals<a href="#ref-13" class="citation">[13]</a>. With internet penetration at 37.6% (17,300 users)<a href="#ref-15" class="citation">[15]</a>, that leaves 28,729 people - 62.4% - without reliable access. About 4,788 underserved households need connectivity (28,729 ÷ 6 average household size = 4,788<sup>*</sup>).</p>
+                        <p><sup>*</sup><em>Household calculation assumes 6-person average based on typical Pacific territory demographics. ±10% variance if actual household size differs from 6-person assumption (market size adjusts ±15-20% if actual size varies 5-7 people)</em></p>
+                    </div>
+                    
+                    <div class="executive-callout">
+                        <h4>Total Addressable Market Calculation</h4>
+                        <p><strong>American Samoa TAM:</strong> $2.87-4.61M annually</p>
+                        <p><strong>Calculation:</strong> 4,788 underserved households × $50-80 monthly × 12 months = $2.87-4.61M</p>
+                        <p><strong>Premium Scenario:</strong> Up to $6.4M with premium services and 50% market share growth</p>
+                        <p><strong>Market Capture Assumptions:</strong> 30-50% realistic penetration rate based on infrastructure deployment capacity and community adoption patterns</p>
+                    </div>
+                    
+                    <h4>Economic Context and Affordability Analysis</h4>
+                    <p>Median household income of $28,532<a href="#ref-16" class="citation">[16]</a><a href="#ref-17" class="citation">[17]</a> makes current satellite costs ($349 equipment + $65-120/month) unaffordable for 60-70% of households. This economic barrier creates the fundamental market opportunity - households need connectivity to participate in the digital economy but cannot access current solutions.</p>
+                    
+                    <div class="financial-metric">
+                        <h4>Federal Infrastructure Context</h4>
+                        <p><strong>BEAD Allocation:</strong> $37 million allocated to American Samoa<a href="#ref-18" class="citation">[18]</a></p>
+                        <p><strong>Disbursement Status:</strong> Only 30-40% disbursed as of August 2025<a href="#ref-19" class="citation">[19]</a></p>
+                        <p><strong>FCC Requirements:</strong> 100/20 Mbps speeds mandated for territories<a href="#ref-20" class="citation">[20]</a>, but funding implementation delayed</p>
+                        <p><strong>Service Cost Range:</strong> $55-130/month average with limited $30/month ACP subsidies available</p>
+                    </div>
+                    
+                    <h4>Broader Market Opportunity</h4>
+                    <div class="comparison-table">
+                        <h4>Multi-Tier Market Analysis</h4>
+                        <table>
+                            <tr>
+                                <th>Market Segment</th>
+                                <th>Current Size</th>
+                                <th>2030 Projection</th>
+                                <th>Annual Growth</th>
+                            </tr>
+                            <tr>
+                                <td>US Broadband Total</td>
+                                <td>~$80B (2025)</td>
+                                <td>$114B</td>
+                                <td>7.4%</td>
+                            </tr>
+                            <tr>
+                                <td>Rural Segment</td>
+                                <td>$30B</td>
+                                <td>$64B (2033)</td>
+                                <td>9.8%</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>Satellite Internet</strong></td>
+                                <td><strong>$5-9B</strong></td>
+                                <td><strong>$23-24B</strong></td>
+                                <td><strong>28.5%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Territories + Appalachia</td>
+                                <td>$15-20B</td>
+                                <td>$20-30B</td>
+                                <td>5-8%</td>
+                            </tr>
+                        </table>
+                        <p><em>Sources: Multiple industry reports<a href="#ref-21" class="citation">[21]</a><a href="#ref-22" class="citation">[22]</a></em></p>
+                    </div>
+                    
+                    <div class="highlight">
+                        <p><strong>Strategic Market Assessment:</strong> American Samoa represents a quintessential underserved market with high barriers to entry, asymmetric information advantages, and substantial value creation potential for disruptive models. Strategic barriers include infrastructure costs 2-3x mainland levels ($5,000-10,000 per node logistics costs), regulatory complexity, and traditional ROI thresholds (sub-10% for private investors), creating acquisition opportunities for agile entrants with innovative cost structures<a href="#ref-24" class="citation">[24]</a>.</p>
+                    </div>
+                    
+                    <h3 id="competition">Competition Landscape</h3>
+                    
+                    <div class="executive-callout">
+                        <h4>Market Competitiveness Assessment</h4>
+                        <p>American Samoa's internet market receives an Internet Society rating of "Very Poor" for consumer choice<a href="#ref-24" class="citation">[24]</a>, driven by incumbent dominance and high sunk costs that result in unaffordable pricing for 62.4% of the population without reliable access<a href="#ref-15" class="citation">[15]</a>.</p>
+                    </div>
+                    
+                    <h4>ASTCA (American Samoa Telecommunications Authority)</h4>
+                    <p><strong>Market Position:</strong> Government-owned provider with ~80% market share, serving as the only fiber internet service provider in the territory<a href="#ref-25" class="citation">[25]</a>. <strong>Service Offerings:</strong> Bundled plans at $149/month (50 Mbps down/5 Mbps up) and $169/month (100 Mbps down/10 Mbps up). <strong>Infrastructure:</strong> Underground fiber network across all inhabited islands, supported by O3b Networks satellite uplinks providing 1.2 Gbit/s capacity<a href="#ref-25" class="citation">[25]</a>. <strong>Limitation:</strong> Bundled pricing structure makes standalone internet less accessible for low-income users, creating market opportunity for unbundled alternatives.</p>
+                    
+                    <h4>Bluesky Communications</h4>
+                    <p><strong>Market Position:</strong> Private telecom with ~19% market share, authorized Starlink reseller since March 2025<a href="#ref-26" class="citation">[26]</a>. <strong>Service Mix:</strong> Mobile, broadband, and satellite services targeting underserved areas. <strong>Starlink Performance:</strong> Up to 350 Mbps down/40 Mbps up potential, with tested averages ~18.71 Mbps down<a href="#ref-27" class="citation">[27]</a>. <strong>Pricing Structure:</strong> Mirrors Starlink's $65-120/month + $175-349 equipment costs, with first-year promotional discounts to $65 in select areas. <strong>Risk Factors:</strong> 10-15% downtime during cyclones, affordability barriers for median income households ($28,532 annually)<a href="#ref-28" class="citation">[28]</a>.</p>
+                    
+                    <h4>Starlink (SpaceX) Direct</h4>
+                    <p><strong>Market Penetration:</strong> Only 1% direct market share in American Samoa, operating primarily through Bluesky reseller network<a href="#ref-27" class="citation">[27]</a>. <strong>Technical Specs:</strong> Global satellite coverage with 20-60ms latency, speeds typically 50-220 Mbps. <strong>Cost Barriers:</strong> Standalone costs ($65-120/month + $175-349 equipment) lock out 60-70% of households. <strong>Market Position:</strong> Addresses connectivity gaps where fiber is uneconomical but faces high entry barriers and strong local competition.</p>
+                    
+                    <h4>National Satellite Providers</h4>
+                    <p><strong>HughesNet and Viasat:</strong> Target rural US territories with pricing at $39.99-49.99/month after promotions<a href="#ref-29" class="citation">[29]</a><a href="#ref-30" class="citation">[30]</a>. <strong>Performance:</strong> Up to 100+ Mbps speeds, 150+ GB data allowances with unlimited plans (possible throttling during congestion). <strong>Technical Limitation:</strong> Higher latency due to geostationary orbits vs LEO, making them less ideal for real-time applications. <strong>Market Penetration:</strong> ~2.9% estimated coverage in American Samoa, not explicitly confirmed but targeting similar underserved territories.</p>
+                    
+                    <h4>Minor Market Players</h4>
+                    <p><strong>Pacifica IT:</strong> Smaller ISP with limited current market presence, possibly inactive or serving niche markets as of 2025. <strong>OneWeb/TS2 SPACE:</strong> May serve remote areas but lack significant market penetration. <strong>Other satellite providers:</strong> Various options available but with minimal market presence in American Samoa.</p>
+                    
+                    <div class="key-insight">
+                        <h4>Competitive Analysis Summary</h4>
+                        <p><strong>Market Dynamics:</strong> Low competitiveness results from incumbent dominance and infrastructure costs 2-3x mainland levels due to geography<a href="#ref-24" class="citation">[24]</a>. Traditional models show sub-10% ROI, deterring private investment despite $65 billion in federal infrastructure funding availability.</p>
+                        <p><strong>Infrastructure Context:</strong> Recent Hawaiki undersea cable activation (2018) provides up to 200 Gb/s capacity, but BEAD disbursement remains only 30-40% complete as of mid-2025<a href="#ref-31" class="citation">[31]</a>.</p>
+                    </div>
+                    
+                    <h4>MicroISP Competitive Positioning</h4>
+                    <p><strong>vs ASTCA:</strong> Unbundled pricing ($50-80/month vs $149-169/month bundled), lower cost entry point, community-focused service model. <strong>vs Bluesky/Starlink:</strong> Shared cost model eliminates $175-349 equipment fees, local support with 99%+ uptime targets, storm resilience through solar backup systems. <strong>vs HughesNet/Viasat:</strong> Lower latency via LEO satellites vs geostationary, better real-time application performance. <strong>vs Traditional ISPs:</strong> Community ownership model with data sovereignty, economic empowerment through opt-in data collection ($5-40/month credits), and privacy-first approach with GDPR/FCC compliance<a href="#ref-34" class="citation">[34]</a>.</p>
+                    
+                    <h3 id="unit-economics">Unit Economics Deep Dive</h3>
+                    
+                    <div class="financial-metric">
+                        <h4>Revenue Model per Node</h4>
+                        <p>$$\text{Monthly Revenue} = \text{Households} \times \text{ARPU}$$</p>
+                        <p>$$R = (20 \text{-} 25) \times (\$50 \text{-} \$80) = \$1,000 \text{-} \$2,000 \text{ per month}$$</p>
+                    </div>
+                    
+                    <div class="financial-metric">
+                        <h4>Capital Expenditure Breakdown</h4>
+                        <ul class="numbered-process">
+                            <li>Starlink dish (bypass mode): <span class="metrics">\$349</span></li>
+                            <li>Beelink mini PC (OpenWRT): <span class="metrics">\$250</span></li>
+                            <li>GL.iNet Beryl AX router: <span class="metrics">\$90</span></li>
+                            <li>TP-Link outdoor access point: <span class="metrics">\$130</span></li>
+                            <li>Solar kit + battery: <span class="metrics">\$150</span></li>
+                            <li>Installation & setup: <span class="metrics">\$470</span></li>
+                        </ul>
+                        <p><strong>Total CapEx: <span class="metrics">\$1,439</span></strong> ≈ <strong><span class="metrics">\$1,500</span></strong></p>
+                    </div>
+                    
+                    <div class="key-insight">
+                        <h4>Operating Economics</h4>
+                        <p>$$\text{Monthly OpEx} = \$250 + \$150 + \$200 = \$600$$</p>
+                        <p><em>Where: <span class="metrics">\$250</span> = backhaul (<span class="metrics">\$120</span> primary Starlink + <span class="metrics">\$130</span> backup/commercial features), <span class="metrics">\$150</span> = maintenance, <span class="metrics">\$200</span> = support</em></p>
+                        <p><em>Note: <span class="metrics">\$120</span> Starlink rate uses standard commercial/reseller pricing; promotional <span class="metrics">\$65</span> rates not available for shared/reseller use<a href="#ref-32" class="citation">[32]</a></em></p>
+                        <p><small>*Redundancy includes backup connectivity and commercial-grade reliability</small></p>
+                        <p>$$\text{EBITDA} = (\$1,000 \text{-} \$2,000) - \$600 = \$400 \text{-} \$1,400 \text{ per month}$$</p>
+                        <p><strong>Margin: 40-70%</strong></p>
+                        
+                        <div class="financial-metric">
+                            <strong>Payback Period:</strong><br>
+                            $$\text{Raw Payback} = \frac{\text{CapEx}}{\text{Monthly EBITDA}} = \frac{\$1,500}{\$400 \text{-} \$1,400} = 1 \text{-} 4 \text{ months}$$
+                            <p><strong>Adjusted for ramp-up: 5-10 months total (includes 3-6 month ramp-up period and operational scaling)<a href="#ref-4" class="citation">[4]</a></strong></p>
+                        </div>
+                    </div>
+                    
+                    <h3 id="business-model">The Business Model That Works</h3>
+                    
+                    <div class="executive-callout">
+                        <h4>Value Proposition</h4>
+                        <p>Shared satellite infrastructure reduces household internet costs by <strong>30-40%</strong> while maintaining healthy unit economics and creating sustainable community connectivity solutions.</p>
+                    </div>
+                    
+                    <div class="comparison-table">
+                        <h4>Cost Comparison: Traditional vs. MicroISP</h4>
+                        <table>
+                            <tr>
+                                <th>Provider</th>
+                                <th>Monthly Cost</th>
+                                <th>Equipment</th>
+                                <th>Total Year 1</th>
+                            </tr>
+                            <tr>
+                                <td>Starlink Direct</td>
+                                <td>\$65-120</td>
+                                <td>\$175-349</td>
+                                <td>\$955-1,789</td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td><strong>MicroISP Model</strong></td>
+                                <td><strong>\$50-80</strong></td>
+                                <td><strong>\$0</strong></td>
+                                <td><strong>\$600-960</strong></td>
+                            </tr>
+                        </table>
+                        <p><em>Savings: \$-5 to \$355 vs. promotional Starlink, or \$829-1,189 vs. standard Starlink rates</em></p>
+                        <p><em>Note: Savings vary with Starlink promotional availability; MicroISP provides consistent community pricing and local support</em></p>
+                    </div>
+                    
+                    <div class="key-insight">
+                        <h4>Enhanced Revenue Model Analysis</h4>
+                        <p><strong>Three-Stream Revenue Structure:</strong></p>
+                        <ul class="feature-list">
+                            <li><strong>Primary (70%):</strong> Subscription revenue - predictable recurring monthly payments</li>
+                            <li><strong>Secondary (20%):</strong> Data partnerships - estimated $5-10k per anonymized dataset based on specialized training data market rates<a href="#ref-33" class="citation">[33]</a></li>
+                            <li><strong>Tertiary (10%):</strong> Platform transaction fees from integrated e-commerce and digital services</li>
+                        </ul>
+                        <p>$$\text{Risk-Adjusted ROI} = \frac{\text{Annual Cash Flow} \times 0.45}{\text{Initial Investment}} = \frac{(\$4,800 \text{-} \$16,800) \times 0.45}{\$1,500} = 144\% \text{-} 504\%$$</p>
+                        <p><strong>5-Year IRR:</strong> 40-50% with enterprise value potential of $200-300M at 10-12x EBITDA multiple</p>
+                        <p><em>Risk adjustment factor (0.45) accounts for ramp-up periods, cyclone disruption risk (20-25%), and market penetration challenges</em></p>
+                    </div>
+                    
+                    <h4>Customer Economics and Market Penetration</h4>
+                    <div class="financial-metric">
+                        <h4>Customer Acquisition Model</h4>
+                        <p><strong>Customer Acquisition Cost (CAC):</strong> ~$75 ($30 marketing + $45 labor)</p>
+                        <p><strong>Lifetime Value (LTV):</strong> $1,200+ (24 months at $50/month with 70% post-payback margin)</p>
+                        <p><strong>LTV:CAC Ratio:</strong> 16:1, reduced to 12:1 after 25% improvement through 20% referral rates</p>
+                        <p><strong>Local Champion Program:</strong> $20/signup commission for community representatives</p>
+                    </div>
+                    
+                    <h4>Data Partnership Value Creation</h4>
+                    <div class="executive-callout">
+                        <h4>Opt-In Data Collection Model</h4>
+                        <p><strong>User Participation Structure:</strong> Voluntary behavioral demonstration recordings for Physics-Informed Neural Networks (PINNs) training</p>
+                        <p><strong>Credit System:</strong> $2.50/hour equivalent, maximum 4 hours/week participation = $5-40/month potential credits</p>
+                        <p><strong>Service Cost Reduction:</strong> $50 service reduced to $10-45 based on participation level</p>
+                        <p><strong>Privacy Framework:</strong> End-to-end encryption, GDPR/FCC compliance, user data ownership rights</p>
+                    </div>
+                    
+                    <p>But here's where it gets interesting - I'm not bullish on making data extraction the primary revenue stream. That creates the Facebook Free Basics problem<a href="#ref-21" class="citation">[21]</a>: users become products, trust erodes, and network performance suffers. However, early on, offering data collection in exchange for access creates clear differentiation from satellite providers racing to cut startup costs. The key is treating this as a tactical advantage, not the foundation of the business.</p>
+                </div>
+
+                <div class="section" id="technical-architecture">
+                    <h2>Technical Architecture & Implementation</h2>
+                    
+                    <h3 id="system-architecture">System Architecture Overview</h3>
+                    
+                    <div class="executive-callout">
+                        <h4>Network Performance Specifications</h4>
+                        <ul class="feature-list">
+                            <li><strong>Throughput:</strong> 50-220 Mbps shared across 20-25 households</li>
+                            <li><strong>Coverage:</strong> 2-3 km radius per node</li>
+                            <li><strong>Latency:</strong> 20-60ms (satellite baseline)</li>
+                            <li><strong>Uptime:</strong> 99.5% (excluding severe weather), 99%+ target with backup systems<a href="#ref-34" class="citation">[34]</a></li>
+                            <li><strong>Power:</strong> 100% solar with 48-hour battery backup</li>
+                            <li><strong>Resilience:</strong> Multi-satellite failover capability, cyclone-resistant weatherproofing</li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Infrastructure Context and Connectivity Framework</h4>
+                    <div class="key-insight">
+                        <h4>Regional Infrastructure Developments</h4>
+                        <p><strong>Hawaiki Undersea Cable:</strong> Activated 2018, provides up to 200 Gb/s capacity to American Samoa, enabling high-bandwidth upstream connectivity<a href="#ref-30" class="citation">[30]</a>.</p>
+                        <p><strong>ASTCA Backbone:</strong> Underground fiber network with O3b Networks satellite uplinks (1.2 Gbit/s capacity) supporting territorial connectivity<a href="#ref-25" class="citation">[25]</a>.</p>
+                        <p><strong>Federal Compliance Requirements:</strong> FCC privacy rules, GDPR-compliant data handling, professional installation with IP67-rated access points for cyclone resistance.</p>
+                        <p><strong>Logistics Challenges:</strong> Remote geography and weather patterns result in $5,000-10,000 per node deployment costs, requiring specialized supply chain management.</p>
+                    </div>
+                    
+                    <h3 id="hardware-components">Hardware Components</h3>
+                    
+                    <div class="comparison-table">
+                        <table>
+                            <tr>
+                                <th>Component</th>
+                                <th>Model</th>
+                                <th>Specifications</th>
+                                <th>Cost</th>
+                            </tr>
+                            <tr>
+                                <td>Satellite Terminal</td>
+                                <td>Starlink (bypass mode)</td>
+                                <td>50-220 Mbps down, Low-earth orbit</td>
+                                <td>\$349</td>
+                            </tr>
+                            <tr>
+                                <td>Router/Gateway</td>
+                                <td>Beelink Mini PC</td>
+                                <td>Intel N100, 8GB RAM, OpenWRT</td>
+                                <td>\$250</td>
+                            </tr>
+                            <tr>
+                                <td>Distribution Router</td>
+                                <td>GL.iNet Beryl AX</td>
+                                <td>WiFi 6, VPN support</td>
+                                <td>\$90</td>
+                            </tr>
+                            <tr>
+                                <td>Access Point</td>
+                                <td>TP-Link EAP610</td>
+                                <td>Outdoor, 2.4/5 GHz, PoE<a href="#ref-58" class="citation">[58]</a></td>
+                                <td>\$130</td>
+                            </tr>
+                            <tr>
+                                <td>Power System</td>
+                                <td>Solar Kit + Battery</td>
+                                <td>200W panel, 48h backup</td>
+                                <td>\$150</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <h3 id="software-stack">Software Stack</h3>
+                    
+                    <div class="key-insight">
+                        <h4>Network Management Layer</h4>
+                        <ul class="numbered-process">
+                            <li><strong>OpenWRT:</strong> Linux-based router OS for network management and QoS</li>
+                            <li><strong>WireGuard VPN:</strong> Secure remote access and management</li>
+                            <li><strong>Nodogsplash:</strong> Captive portal for user authentication</li>
+                            <li><strong>Custom Dashboard:</strong> Real-time monitoring and billing integration</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="executive-callout">
+                        <h4>Data Collection Framework (Optional)</h4>
+                        <p><strong>React Native App:</strong> Cross-platform mobile application for voluntary data contribution tasks, designed with user privacy and consent as core principles.</p>
+                        <ul class="feature-list">
+                            <li>Timestamped environmental data collection</li>
+                            <li>Agricultural monitoring (irrigation, equipment usage)</li>
+                            <li>Infrastructure utilization patterns</li>
+                            <li>Physics-informed neural network training data</li>
+                        </ul>
+                        <p><em>All data collection is opt-in with transparent consent mechanisms</em></p>
+                    </div>
+                    
+                    <h3 id="deployment-process">Deployment Process</h3>
+                    
+                    <div class="deployment-process-container">
+                        <h4>Implementation Timeline</h4>
+                        <ol class="numbered-process">
+                            <li><strong>Community Outreach (Week 1-2):</strong> Identify local champions, gather household signups, establish community agreements</li>
+                            <li><strong>Site Survey (Week 3):</strong> Optimal placement analysis, power requirements, coverage mapping</li>
+                            <li><strong>Hardware Installation (Week 4):</strong> 2-3 hour professional setup, solar system integration, network testing</li>
+                            <li><strong>User Onboarding (Week 5):</strong> WiFi credential distribution, app installation, training sessions</li>
+                            <li><strong>Network Optimization (Week 6+):</strong> Performance monitoring, QoS tuning, ongoing support</li>
+                        </ol>
+                    </div>
+                    
+                    <h3 id="data-technical">Technical Architecture</h3>
+                    <p><strong>Q: What's the technical architecture?</strong> A: Hardware: Starlink dish in bypass mode for backhaul, Beelink mini PC (8GB RAM, Intel N100) running OpenWRT for routing/QoS, TP-Link EAP610-Outdoor access points for distribution, 200W solar kit with battery backup. Software: OpenWRT for network management, WireGuard VPN for remote access, Nodogsplash for captive portal, custom app for data tasks using React Native.</p>
+                </div>
+
+                <div class="section" id="data-collection-opportunity">
+                    <h2>The Data Collection Opportunity</h2>
+                    <div class="highlight">
+                        <p><strong>My core insight:</strong> expanding beyond pure ISP service to systematic data collection for PINN training. The infrastructure becomes a distributed platform for capturing human-in-the-loop data where people interact with physical systems<a href="#ref-35" class="citation">[35]</a>.</p>
+                    </div>
+                    
+                    <p>For example, a farmer's irrigation timing, planting methods, or equipment usage becomes ground truth data that anchors agricultural PINNs<a href="#ref-5" class="citation">[5]</a>, preventing models from converging to mathematically consistent but practically useless solutions.</p>
+                    
+                    <p>The key advantage is capturing this data now from communities where high satellite startup costs (<span class="metrics">\$349</span> hardware (promotional rates as low as <span class="metrics">\$175</span>) + <span class="metrics">\$65-120/month</span>)<a href="#ref-8" class="citation">[8]</a> create barriers to connectivity. By providing affordable access through shared infrastructure in exchange for participating in data collection tasks, we can document human practices and decision-making that would otherwise remain invisible to researchers.</p>
+                    
+                    <p>This human-anchored data is especially valuable in early PINN development<a href="#ref-36" class="citation">[36]</a> when models aren't mature and need real-world calibration. The same principle applies to robotics (documenting human pick-and-place tasks) or anywhere humans constrain or guide physical systems governed by PDEs.</p>
+                    
+                    <p>It's like Tesla's Optimus shift<a href="#ref-9" class="citation">[9]</a>. Instead of expensive motion capture, they're using vision and low-cost setups to scale data collection. My MicroISP nodes work the same way - the connectivity infrastructure captures human behavioral data at scale.</p>
+                    
+                    <h3 id="data-alignment">Technical Alignment</h3>
+                    <p>Given my background in computer vision, systems architecture, and working with distributed datasets, this intersection of connectivity infrastructure and machine learning data capture is exactly where I want to focus.</p>
+                    
+                    <p><strong>Core Competencies:</strong></p>
+                    <ul>
+                        <li>Deep learning and computer vision expertise from Stanford research</li>
+                        <li>Systems architecture experience from Microsoft and distributed computing projects</li>
+                        <li>Proven ability to extract signal from sparse, noisy data (PET/MRI enhancement research)</li>
+                    </ul>
+                    
+                    <p>Data collection through this infrastructure differs from traditional ML datasets - it requires less sophisticated language understanding than LLM training data, focusing instead on simpler inputs like timestamped actions, sensor readings, and basic behavioral patterns. This makes it more accessible for users while still providing valuable training data for physics-informed models.</p>
+                </div>
+
+                <div class="section" id="implementation-roadmap">
+                    <h2>The Implementation Roadmap</h2>
+                    
+                    <p><strong>Phase 1:</strong> Prove unit economics with straightforward cost reduction (Q4 2025-Q1 2026)<br>
+                    Deploy POC node serving 20-25 households; validate <span class="metrics">\$1-2k /mo</span> revenue, 5-10 month payback. Administer surveys by geographic area to determine areas with high utilization first. Milestones: 80% utilization, data task adoption >50%.</p>
+                    
+                    <p><strong>Phase 2:</strong> Use data-for-access as early differentiation while satellite providers catch up on pricing (Q2-Q4 2026)<br>
+                    Roll out 5-10 nodes; integrate data-for-access app, partner AI labs. Stay focused on American Samoa, test freelance platform pilots.</p>
+                    
+                    <p><strong>Phase 3:</strong> Spin off research/data operations to preserve core ISP trust and performance (2027)<br>
+                    Scale to 50 nodes, target 30% market share, <span class="metrics">\$5 M</span> ARR. Separate Research Ops to keep it separate from core ISP.</p>
+                    
+                    <p><strong>Phase 4:</strong> Scale the economic enablement platform as communities develop purchasing power (2028+)<br>
+                    Franchise model expands to Appalachia and Puerto Rico; full economic platform with skills training. Self-sustaining through subscriptions and data sales, targeting <span class="metrics">\$50-100 M</span> revenue.</p>
+                </div>
+
+                <div style="margin-top: 24px; text-align: center;"> <a href="mailto:lekanadeyeri@gmail.com" class="button">Email Me</a> <a href="https://x.com/messages/compose?recipient_id=855956089828933632" class="button button-secondary" target="_blank">Message on X</a> <a href="https://linkedin.com/in/lekanadeyeri" class="button button-secondary" target="_blank">LinkedIn</a> <a href="https://hy.ms" class="button button-secondary" target="_blank">Blog</a> </div>
+
+                <div class="page-references">
+                    <h3>References</h3>
+                    <div class="references-list">
+                        <div class="reference-item" id="ref-1">
+                            <span class="ref-number">[1]</span>
+                            <div class="ref-content"><a href="#cite-1" class="back-link" title="Back to citation">↑</a> "Physics-informed machine learning: case studies for weather and climate modelling," Philosophical Transactions of the Royal Society A. [Online]. Available: https://royalsocietypublishing.org/doi/10.1098/rsta.2020.0093. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-2">
+                            <span class="ref-number">[2]</span>
+                            <div class="ref-content"><a href="#cite-2" class="back-link" title="Back to citation">↑</a> "Broadband - USDA." [Online]. Available: https://www.usda.gov/sustainability/infrastructure/broadband. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-3">
+                            <span class="ref-number">[3]</span>
+                            <div class="ref-content"><a href="#cite-3" class="back-link" title="Back to citation">↑</a> "AI Training Dataset Market Size, Share | Industry Report 2030," [Online]. Available: https://www.grandviewresearch.com/industry-analysis/ai-training-dataset-market. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-4">
+                            <span class="ref-number">[4]</span>
+                            <div class="ref-content"><a href="#cite-4" class="back-link" title="Back to citation">↑</a> "Understanding the Business Investment Payback Period," [Online]. Available: https://preferredcfo.com/insights/determining-payback-period-of-business-investment. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-5">
+                            <span class="ref-number">[5]</span>
+                            <div class="ref-content"><a href="#cite-5" class="back-link" title="Back to citation">↑</a> "A hybrid time series and physics-informed machine learning framework for smart agriculture," [Online]. Available: https://www.sciencedirect.com/science/article/abs/pii/S0952197625001058. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-6">
+                            <span class="ref-number">[6]</span>
+                            <div class="ref-content"><a href="#cite-6" class="back-link" title="Back to citation">↑</a> "Integrating data-driven and physics-based approaches for robust weather and climate modeling," [Online]. Available: https://www.nature.com/articles/s41598-025-13306-7. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-7">
+                            <span class="ref-number">[7]</span>
+                            <div class="ref-content"><a href="#cite-7" class="back-link" title="Back to citation">↑</a> "Residential - Starlink," [Online]. Available: https://www.starlink.com/us/residential. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-8">
+                            <span class="ref-number">[8]</span>
+                            <div class="ref-content"><a href="#cite-8" class="back-link" title="Back to citation">↑</a> "Starlink Internet Deals and Promotions," [Online]. Available: https://broadbandnow.com/starlink-deals. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-9">
+                            <span class="ref-number">[9]</span>
+                            <div class="ref-content"><a href="#cite-9" class="back-link" title="Back to citation">↑</a> "Tesla shifted its Optimus training strategy - Business Insider," [Online]. Available: https://www.businessinsider.com/tesla-musk-ueue-humanoid-robot-training-motion-capture-cameras-2025-8. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-10">
+                            <span class="ref-number">[10]</span>
+                            <div class="ref-content"><a href="#cite-10" class="back-link" title="Back to citation">↑</a> "US10963540B2 - Physics informed learning machine - Google Patents," [Online]. Available: https://patents.google.com/patent/US10963540B2. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-11">
+                            <span class="ref-number">[11]</span>
+                            <div class="ref-content"><a href="#cite-11" class="back-link" title="Back to citation">↑</a> "Starlink Internet Deals and Promotions," [Online]. Available: https://broadbandnow.com/starlink-deals. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-12">
+                            <span class="ref-number">[12]</span>
+                            <div class="ref-content"><a href="#cite-12" class="back-link" title="Back to citation">↑</a> "Process‐Informed Neural Networks: A Hybrid Modelling Approach," [Online]. Available: https://onlinelibrary.wiley.com/doi/10.1111/ele.70012. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-13">
+                            <span class="ref-number">[13]</span>
+                            <div class="ref-content"><a href="#cite-13" class="back-link" title="Back to citation">↑</a> "American Samoa Population (2025) - Worldometer," [Online]. Available: https://www.worldometers.info/world-population/american-samoa-population/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-14">
+                            <span class="ref-number">[14]</span>
+                            <div class="ref-content"><a href="#cite-14" class="back-link" title="Back to citation">↑</a> "Deepening the digital divide: Pew says cities will gain as rural towns lose," [Online]. Available: https://wirelessestimator.com/articles/2025/deepening-the-digital-divide-pew-says-cities-will-gain-as-rural-towns-lose-in-broken-broadband-rollout/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-15">
+                            <span class="ref-number">[15]</span>
+                            <div class="ref-content"><a href="#cite-15" class="back-link" title="Back to citation">↑</a> "Digital 2025: American Samoa - DataReportal," [Online]. Available: https://datareportal.com/reports/digital-2025-american-samoa. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-16">
+                            <span class="ref-number">[16]</span>
+                            <div class="ref-content"><a href="#cite-16" class="back-link" title="Back to citation">↑</a> "Internet Society Pulse Country Report: American Samoa 2025," [Online]. Available: https://www.internetsociety.org/resources/pulse/2025/country-report/american-samoa/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-17">
+                            <span class="ref-number">[17]</span>
+                            <div class="ref-content"><a href="#cite-17" class="back-link" title="Back to citation">↑</a> "HUD Notice Median Family Incomes FY 2025," [Online]. Available: https://www.novoco.com/public-media/documents/hud-notice-median-family-incomes-fy-2025-04012025.pdf. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-18">
+                            <span class="ref-number">[18]</span>
+                            <div class="ref-content"><a href="#cite-18" class="back-link" title="Back to citation">↑</a> "American Samoa | Spending Profile - USAspending," [Online]. Available: https://www.usaspending.gov/state/american-samoa/2025. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-19">
+                            <span class="ref-number">[19]</span>
+                            <div class="ref-content"><a href="#cite-19" class="back-link" title="Back to citation">↑</a> "NTIA Internet for All: BEAD Program Progress Dashboard," [Online]. Available: https://www.ntia.gov/funding-programs/internet-all/broadband-equity-access-and-deployment-bead-program/progress-dashboard. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-20">
+                            <span class="ref-number">[20]</span>
+                            <div class="ref-content"><a href="#cite-20" class="back-link" title="Back to citation">↑</a> "Broadband Data Collection Shows Access to High-Speed Internet," [Online]. Available: https://www.fcc.gov/news-events/blog/2025/05/20/broadband-data-collection-shows-access-high-speed-internet-services. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-21">
+                            <span class="ref-number">[21]</span>
+                            <div class="ref-content"><a href="#cite-21" class="back-link" title="Back to citation">↑</a> "Internet.org - Wikipedia," [Online]. Available: https://en.wikipedia.org/wiki/Free_Basics. [Accessed: Aug. 30, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-22">
+                            <span class="ref-number">[22]</span>
+                            <div class="ref-content"><a href="#cite-22" class="back-link" title="Back to citation">↑</a> "U.S. Satellite Internet Market Size, Share, Forecast 2025-33 - IMARC Group," [Online]. Available: https://www.imarcgroup.com/us-satellite-internet-market. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-23">
+                            <span class="ref-number">[23]</span>
+                            <div class="ref-content"><a href="#cite-23" class="back-link" title="Back to citation">↑</a> "Global Rural Internet System Market Size By Technology - Verified Market Reports," [Online]. Available: https://www.verifiedmarketreports.com/product/rural-internet-system-market/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-24">
+                            <span class="ref-number">[24]</span>
+                            <div class="ref-content"><a href="#cite-24" class="back-link" title="Back to citation">↑</a> "Internet Society Country Report: American Samoa 2023," [Online]. Available: https://www.internetsociety.org/resources/2023/pulse-country-report-american-samoa/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-25">
+                            <span class="ref-number">[25]</span>
+                            <div class="ref-content"><a href="#cite-25" class="back-link" title="Back to citation">↑</a> "ASTCA - American Samoa Telecommunications Authority," [Online]. Available: https://www.astca.net/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-26">
+                            <span class="ref-number">[26]</span>
+                            <div class="ref-content"><a href="#cite-26" class="back-link" title="Back to citation">↑</a> "Bluesky Communications," [Online]. Available: https://www.bluesky.as/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-27">
+                            <span class="ref-number">[27]</span>
+                            <div class="ref-content"><a href="#cite-27" class="back-link" title="Back to citation">↑</a> "Starlink's Global Takeover: 100+ Countries Now Online - TS2 SPACE," [Online]. Available: https://ts2.tech/en/starlinks-global-takeover-100-countries-now-online-speeds-reviews-latest-updates/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-28">
+                            <span class="ref-number">[28]</span>
+                            <div class="ref-content"><a href="#cite-28" class="back-link" title="Back to citation">↑</a> "Cyclone Heta - Wikipedia," [Online]. Available: https://en.wikipedia.org/wiki/Cyclone_Heta. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-29">
+                            <span class="ref-number">[29]</span>
+                            <div class="ref-content"><a href="#cite-29" class="back-link" title="Back to citation">↑</a> "HughesNet Satellite Internet Plans," [Online]. Available: https://www.hughesnet.com/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-30">
+                            <span class="ref-number">[30]</span>
+                            <div class="ref-content"><a href="#cite-30" class="back-link" title="Back to citation">↑</a> "Viasat Satellite Internet," [Online]. Available: https://www.viasat.com/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-31">
+                            <span class="ref-number">[31]</span>
+                            <div class="ref-content"><a href="#cite-31" class="back-link" title="Back to citation">↑</a> "NTIA Blog: Three Years of High-Speed Internet Infrastructure Investment," [Online]. Available: https://www.ntia.gov/blog/2024/three-years-high-speed-internet-infrastructure-investment. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-32">
+                            <span class="ref-number">[32]</span>
+                            <div class="ref-content"><a href="#cite-32" class="back-link" title="Back to citation">↑</a> "Starlink Global Priority Service plans," [Online]. Available: https://store.orbitalconnect.com/starlink-global-priority-service-plans/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-33">
+                            <span class="ref-number">[33]</span>
+                            <div class="ref-content"><a href="#cite-33" class="back-link" title="Back to citation">↑</a> "AI Training Dataset Market Trends and Industry Forecast 2025-2034," [Online]. Available: https://finance.yahoo.com/news/ai-training-dataset-market-trends-164900318.html. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-34">
+                            <span class="ref-number">[34]</span>
+                            <div class="ref-content"><a href="#cite-34" class="back-link" title="Back to citation">↑</a> "Gita causes US$7m worth of damage to American Samoa's infrastructure - RNZ," [Online]. Available: https://www.rnz.co.nz/international/pacific-news/351280/gita-causes-us-7m-worth-of-damage-to-american-samoa-s-infrastructure. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-35">
+                            <span class="ref-number">[35]</span>
+                            <div class="ref-content"><a href="#cite-35" class="back-link" title="Back to citation">↑</a> "Physics-informed neural networks for high-resolution weather reconstruction," [Online]. Available: https://pubmed.ncbi.nlm.nih.gov/39119018/. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-36">
+                            <span class="ref-number">[36]</span>
+                            <div class="ref-content"><a href="#cite-36" class="back-link" title="Back to citation">↑</a> "Understanding Physics-Informed Neural Networks - MDPI," [Online]. Available: https://www.mdpi.com/2673-2688/5/3/74. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-56">
+                            <span class="ref-number">[56]</span>
+                            <div class="ref-content"><a href="#cite-56" class="back-link" title="Back to citation">↑</a> "The Socio-Economic Impact of Broadband in Rural and Remote Areas," OECD Digital Economy Papers. [Online]. Available: https://www.oecd.org/internet/broadband/43743703.pdf. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-58">
+                            <span class="ref-number">[58]</span>
+                            <div class="ref-content"><a href="#cite-58" class="back-link" title="Back to citation">↑</a> "Low-Power, Long-Range WiFi Technologies for IoT," IEEE Communications Magazine. [Online]. Available: https://ieeexplore.ieee.org/document/7953780. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                        <div class="reference-item" id="ref-59">
+                            <span class="ref-number">[59]</span>
+                            <div class="ref-content"><a href="#cite-59" class="back-link" title="Back to citation">↑</a> "Decentralized Autonomous Organizations (DAOs) for Infrastructure Projects," Journal of Infrastructure Systems. [Online]. Available: https://ascelibrary.org/doi/10.1061/%28ASCE%29IS.1943-555X.0000687. [Accessed: Sept. 1, 2025].</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <p>Looking forward to exploring these opportunities together.</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>
